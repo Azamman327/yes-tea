@@ -9,7 +9,7 @@ body {
   .container {
     width: 480px; /* 고정된 모바일 너비 */
     margin: 0 auto;
-    padding: 20px;
+    padding: 5rem;
     background-color: #FFF8F3;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     min-height: 100vh;
