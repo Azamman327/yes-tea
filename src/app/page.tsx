@@ -1,4 +1,4 @@
-import '/src/app/styles/globals.css';
+import '/src/styles/globals.css';
 import Image from 'next/image'
 
 export default function Home() {
@@ -15,7 +15,7 @@ export default function Home() {
       <button className="bg-pointgreen rounded-full text-slate-50 w-full py-2">
         회원가입
       </button>
-      <p className='text-slate-400'>혹시 계정이 있으신가요? <a>로그인하기</a></p>
+      <p className='text-slate-400'>혹시 계정이 있으신가요? <a className='cursor-pointer'>로그인하기</a></p>
       </div>
     </div>
   );
