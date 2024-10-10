@@ -1,16 +1,16 @@
 body {
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    background-color: #FFF;
-  }
-  
-  .container {
-    width: 480px; /* 고정된 모바일 너비 */
-    margin: 0 auto;
-    padding: 5rem;
-    background-color: #FFF8F3;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    min-height: 100vh;
-  }
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  background-color: #fff;
+}
+
+.container {
+  width: 480px; /* 고정된 모바일 너비 */
+  margin: 0 auto;
+  padding: 5rem;
+  background-color: #fff8f3;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  min-height: 100vh;
+}
