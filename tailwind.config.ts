@@ -12,7 +12,7 @@ const config: Config = {
         background: '#FFF8F3',
         pointgreen: '#17C37B',
         stopred: '#FF7F50',
-        stopredhover: '#FF6347'
+        stopredhover: '#FF6347',
       },
     },
     fontSize: {
@@ -23,7 +23,7 @@ const config: Config = {
       '3xl': '1.953rem',
       '4xl': '2.441rem',
       '5xl': '3.052rem',
-    }
+    },
   },
   plugins: [],
 };

@@ -46,14 +46,14 @@ export default function Timer() {
   };
 
   return (
-    <div className='w-full'>
+    <div className="w-full">
       <div className="flex flex-row justify-center">
         <span className="minute"></span>
         <div>m</div>
         <span className="second ml-4"></span>
         <div>{count}s</div>
       </div>
-      <div className='flex flex-row justify-center gap-8'>
+      <div className="flex flex-row justify-center gap-8">
         {isRunning ? (
           <button
             className="mt-4 w-full rounded-md bg-stopred py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg active:bg-stopredhover hover:bg-stopredhover active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none mt-10"

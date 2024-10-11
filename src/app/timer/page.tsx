@@ -7,7 +7,6 @@ export default function TimerMain() {
     <div className="container">
       <div className="flex flexrow justify-center font-serif text-5xl">
         <Timer />
-        
       </div>
       <EditModal />
     </div>
