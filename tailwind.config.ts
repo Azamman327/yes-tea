@@ -11,6 +11,8 @@ const config: Config = {
       colors: {
         background: '#FFF8F3',
         pointgreen: '#17C37B',
+        stopred: '#FF7F50',
+        stopredhover: '#FF6347'
       },
     },
     fontSize: {
