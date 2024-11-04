@@ -2,6 +2,7 @@
 
 import {
   Button,
+  Input,
   Modal,
   ModalOverlay,
   ModalContent,
@@ -17,21 +18,30 @@ const EditModal: React.FC = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <>
-      <Button onClick={onOpen}>Open Modal</Button>
+      <Button onClick={onOpen} className="w-full mt-5">edit time</Button>
 
       <div className="flex item-center">
         <Modal isOpen={isOpen} onClose={onClose}>
           <ModalOverlay />
           <ModalContent>
-            <ModalHeader>Modal Title</ModalHeader>
+            <ModalHeader>타이머 시간 바꾸기</ModalHeader>
+
             <ModalCloseButton />
-            <ModalBody>d</ModalBody>
+
+            <ModalBody className="flex flex-row">
+              <span className="flex flex-row items-center pr-8 w-1/3">
+                <Input size="sm"/>분
+              </span>
+              <span className="flex flex-row items-center pr-8 w-1/3">
+                <Input size="sm"/>초
+              </span>
+            </ModalBody>
 
             <ModalFooter>
               <Button colorScheme="blue" mr={3} onClick={onClose}>
-                Close
+                확인
               </Button>
-              <Button variant="ghost">Secondary Action</Button>
+              <Button variant="ghost" onClick={onClose}>취소</Button>
             </ModalFooter>
           </ModalContent>
         </Modal>
