@@ -26,7 +26,9 @@ const EditModal: React.FC = () => {
 
   return (
     <>
-      <Button onClick={onOpen} className="w-full mt-5">edit time</Button>
+      <Button onClick={onOpen} className="w-full mt-5">
+        edit time
+      </Button>
 
       <div className="flex item-center">
         <Modal isOpen={isOpen} onClose={onClose}>
@@ -38,10 +40,10 @@ const EditModal: React.FC = () => {
 
             <ModalBody className="flex flex-row">
               <span className="flex flex-row items-center pr-8 w-1/3">
-                <Input size="sm"/>분
+                <Input size="sm" />분
               </span>
               <span className="flex flex-row items-center pr-8 w-1/3">
-                <Input size="sm"/>초
+                <Input size="sm" />초
               </span>
             </ModalBody>
 
@@ -49,7 +51,9 @@ const EditModal: React.FC = () => {
               <Button colorScheme="blue" mr={3} onClick={handleEdit}>
                 확인
               </Button>
-              <Button variant="ghost" onClick={onClose}>취소</Button>
+              <Button variant="ghost" onClick={onClose}>
+                취소
+              </Button>
             </ModalFooter>
           </ModalContent>
         </Modal>
