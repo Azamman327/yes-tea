@@ -14,8 +14,16 @@ import {
 
 import { useDisclosure } from '@chakra-ui/react';
 
+import { editTime } from './utils/editTime';
+
 const EditModal: React.FC = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
+
+  const handleEdit = () => {
+    onClose();
+    editTime();
+  };
+
   return (
     <>
       <Button onClick={onOpen} className="w-full mt-5">edit time</Button>
@@ -38,7 +46,7 @@ const EditModal: React.FC = () => {
             </ModalBody>
 
             <ModalFooter>
-              <Button colorScheme="blue" mr={3} onClick={onClose}>
+              <Button colorScheme="blue" mr={3} onClick={handleEdit}>
                 확인
               </Button>
               <Button variant="ghost" onClick={onClose}>취소</Button>
