@@ -14,14 +14,14 @@ import {
 
 import { useDisclosure } from '@chakra-ui/react';
 
-import { editTime } from './utils/editTime';
+// import { editTime } from './utils/editTime';
 
 const EditModal: React.FC = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const handleEdit = () => {
     onClose();
-    editTime();
+    // editTime();
   };
 
   return (
