@@ -1,3 +1,4 @@
-export const editTime = () => {
+export const editTime = (): void => {
   alert('edittime');
 };
+

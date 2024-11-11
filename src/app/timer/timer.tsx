@@ -4,19 +4,20 @@ import { useState, useEffect } from 'react';
 import '/src/styles/globals.css';
 
 export default function Timer() {
-  const [count, setCount] = useState(10);
+  const [minute, setMinute] = useState(1);
+  const [second, setSecond] = useState(10);
   const [isRunning, setIsRunning] = useState(false);
   const [timerId, setTimerId] = useState<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
     if (isRunning) {
       const id = setInterval(() => {
-        setCount((prevCount) => {
-          if (prevCount <= 1) {
+        setSecond((prevsecond) => {
+          if (prevsecond <= 1) {
             clearInterval(id);
             return 0;
           }
-          return prevCount - 1;
+          return prevsecond - 1;
         });
       }, 1000);
 
@@ -42,7 +43,7 @@ export default function Timer() {
     if (timerId) {
       clearInterval(timerId);
     }
-    setCount(10);
+    setSecond(10);
   };
 
   return (
@@ -51,7 +52,7 @@ export default function Timer() {
         <span className="minute"></span>
         <div>m</div>
         <span className="second ml-4"></span>
-        <div>{count}s</div>
+        <div>{second}s</div>
       </div>
       <div className="flex flex-row justify-center gap-8">
         {isRunning ? (
