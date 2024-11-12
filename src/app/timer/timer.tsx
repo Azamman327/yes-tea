@@ -14,7 +14,19 @@ export default function Timer() {
   const [isRunning, setIsRunning] = useState(false);
   const [timerId, setTimerId] = useState<NodeJS.Timeout | null>(null);
 
+  const minutes = useTimeStore((state) => state.minutes)
+  const seconds = useTimeStore((state) => state.seconds)
+
   // useState -> useTimeStore 사용으로 변경
+
+  useEffect(() => {
+    if (isRunning) {
+      const id = setInterval(() => {
+        timeStore.updateTimeState
+      })
+    }
+  })
+
   // useEffect(() => {
   //   if (isRunning) {
   //     const id = setInterval(() => {
@@ -51,9 +63,6 @@ export default function Timer() {
   //   }
   //   setSecond(10);
   // };
-
-  const minutes = useTimeStore((state) => state.minutes)
-  const seconds = useTimeStore((state) => state.seconds)
 
   return (
     <div className="w-full">
