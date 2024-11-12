@@ -3,12 +3,9 @@
 import { useState, useEffect } from 'react';
 import '/src/styles/globals.css';
 
-import { TimeState, useTimeStore } from "./timeStore"
+import { useTimeStore } from "./timeStore"
 
 export default function Timer() {
-  // zustand 사용. useState 삭제 작업 필요
-  // const [minute, setMinute] = useState(1);
-  // const [second, setSecond] = useState(10);
   const timeStore = useTimeStore();
 
   const [isRunning, setIsRunning] = useState(false);
@@ -17,7 +14,6 @@ export default function Timer() {
   const minutes: number = useTimeStore((state) => state.minutes)
   const seconds: number = useTimeStore((state) => state.seconds)
 
-  // useState -> useTimeStore 사용으로 변경
   useEffect(() => {
     if (isRunning) {
       const id = setInterval(() => {
