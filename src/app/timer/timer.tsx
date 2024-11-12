@@ -14,55 +14,44 @@ export default function Timer() {
   const [isRunning, setIsRunning] = useState(false);
   const [timerId, setTimerId] = useState<NodeJS.Timeout | null>(null);
 
-  const minutes = useTimeStore((state) => state.minutes)
-  const seconds = useTimeStore((state) => state.seconds)
+  const minutes: number = useTimeStore((state) => state.minutes)
+  const seconds: number = useTimeStore((state) => state.seconds)
 
   // useState -> useTimeStore 사용으로 변경
-
   useEffect(() => {
     if (isRunning) {
       const id = setInterval(() => {
-        timeStore.updateTimeState
-      })
+        timeStore.updateSecondsState(timeStore.seconds - 1);
+        console.log(timeStore.seconds);
+        if (timeStore.seconds <= 1) {
+          clearInterval(id);
+          setIsRunning(false);
+        }
+      }, 1000)
+      setTimerId(id);
     }
-  })
+    return () => clearInterval(timerId!);
+  }, [isRunning, timeStore]);
 
-  // useEffect(() => {
-  //   if (isRunning) {
-  //     const id = setInterval(() => {
-  //       setSecond((prevsecond) => {
-  //         if (prevsecond <= 1) {
-  //           clearInterval(id);
-  //           return 0;
-  //         }
-  //         return prevsecond - 1;
-  //       });
-  //     }, 1000);
+  const startTimer = () => {
+    setIsRunning(true);
+  };
 
-  //     setTimerId(id);
-  //   }
+  const pauseTimer = () => {
+    setIsRunning(false);
+    if (timerId) {
+      clearInterval(timerId);
+    }
+  };
 
-  //   return () => clearInterval(timerId!);
-  // }, [isRunning]);
-
-  // const startTimer = () => {
-  //   setIsRunning(true);
-  // };
-
-  // const pauseTimer = () => {
-  //   setIsRunning(false);
-  //   if (timerId) {
-  //     clearInterval(timerId);
-  //   }
-  // };
-
-  // const resetTimer = () => {
-  //   setIsRunning(false);
-  //   if (timerId) {
-  //     clearInterval(timerId);
-  //   }
-  //   setSecond(10);
-  // };
+  const resetTimer = () => {
+    setIsRunning(false);
+    if (timerId) {
+      clearInterval(timerId);
+    }
+    timeStore.updateMinutesState(0);
+    timeStore.updateSecondsState(10);
+  };
 
   return (
     <div className="w-full">
@@ -73,7 +62,7 @@ export default function Timer() {
         <div>{seconds}s</div>
       </div>
       {/* useState -> useTimeStore 사용으로 변경 */}
-      {/* <div className="flex flex-row justify-center gap-8">
+      <div className="flex flex-row justify-center gap-8">
         {isRunning ? (
           <button
             className="mt-4 w-full rounded-md bg-stopred py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg active:bg-stopredhover hover:bg-stopredhover active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none mt-10"
@@ -98,7 +87,7 @@ export default function Timer() {
         >
           초기화
         </button>
-      </div> */}
+      </div>
     </div>
   );
 }
