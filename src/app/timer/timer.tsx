@@ -50,7 +50,7 @@ export default function Timer() {
   };
 
   return (
-    <div className="w-full">
+    <div className="w-full pt-36">
       <div className="flex flex-row justify-center">
         <span className="minute"></span>
         <div>{minutes}m</div>
