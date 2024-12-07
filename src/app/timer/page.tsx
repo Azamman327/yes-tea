@@ -1,6 +1,8 @@
 import '/src/styles/globals.css';
 import Timer from './timer';
-import EditModal from './modal';
+import dynamic from 'next/dynamic';
+
+const EditModal = dynamic(() => import('./modal'), { ssr: false });
 
 export default function TimerMain() {
   return (
