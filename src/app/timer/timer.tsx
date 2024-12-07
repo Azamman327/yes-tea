@@ -57,7 +57,6 @@ export default function Timer() {
         <span className="second ml-4"></span>
         <div>{seconds}s</div>
       </div>
-      {/* useState -> useTimeStore 사용으로 변경 */}
       <div className="flex flex-row justify-center gap-8">
         {isRunning ? (
           <button
