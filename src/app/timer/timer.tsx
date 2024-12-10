@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import '/src/styles/globals.css';
 
-import { useTimeStore } from "./timeStore"
+import { useTimeStore } from './timeStore';
 
 export default function Timer() {
   const timeStore = useTimeStore();
@@ -11,8 +11,8 @@ export default function Timer() {
   const [isRunning, setIsRunning] = useState(false);
   const [timerId, setTimerId] = useState<NodeJS.Timeout | null>(null);
 
-  const minutes: number = useTimeStore((state) => state.minutes)
-  const seconds: number = useTimeStore((state) => state.seconds)
+  const minutes: number = useTimeStore((state) => state.minutes);
+  const seconds: number = useTimeStore((state) => state.seconds);
 
   useEffect(() => {
     if (isRunning) {
@@ -23,7 +23,7 @@ export default function Timer() {
           clearInterval(id);
           setIsRunning(false);
         }
-      }, 1000)
+      }, 1000);
       setTimerId(id);
     }
     return () => clearInterval(timerId!);
