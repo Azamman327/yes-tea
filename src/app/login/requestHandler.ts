@@ -3,6 +3,18 @@ export async function login(name: String, password: String): Promise<void> {
   {
     method: 'GET',
   });
-  const data = await response.json();
-  console.log(data)
+  const result = await response.json();
+  console.log(result);
+
+  switch(result){
+    case 1:
+      window.location.replace('/timer');
+      break;
+    case 2:
+      alert('틀린 비밀번호입니다.');
+      break;
+    case 0:
+      alert('존재하지 않는 회원입니다.');
+      break;
+  }
 }
