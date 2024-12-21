@@ -9,10 +9,12 @@ export async function login(name: String, password: String): Promise<void> {
     });
 
     console.log(response.data);
+    window.sessionStorage.setItem("userId", response.data.userId);
+
     window.location.replace('/timer');
   } catch (error) {
     let errorMessage = error.response.data.message;
-    
+
     if (errorMessage == "INVALID USER") {
       alert('존재하지 않는 회원입니다.');
     }
