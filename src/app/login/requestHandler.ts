@@ -3,17 +3,17 @@ export async function login(name: String, password: String): Promise<void> {
   {
     method: 'GET',
   });
-  const result = await response.json();
+  const result: String = await response.json();
   console.log(result);
 
   switch(result){
-    case 1:
+    case "SUCCESS":
       window.location.replace('/timer');
       break;
-    case 2:
+    case "FAILURE":
       alert('틀린 비밀번호입니다.');
       break;
-    case 0:
+    case "NO_USER":
       alert('존재하지 않는 회원입니다.');
       break;
   }
