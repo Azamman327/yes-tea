@@ -6,10 +6,8 @@ const EditModal = dynamic(() => import('./modal'), { ssr: false });
 
 export default function TimerMain() {
   return (
-    <div className="container">
-      <div className="flex flex-row justify-center font-serif text-5xl">
-        <Timer />
-      </div>
+    <div className="container flex flex-col items-center font-serif text-5xl">
+      <Timer />
       <EditModal />
     </div>
   );
