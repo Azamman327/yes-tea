@@ -1,13 +1,12 @@
 'use client';
 
 import './globals.css';
-import { ChakraProvider } from '@chakra-ui/react';
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="en">
       <head>
@@ -15,7 +14,7 @@ export default function RootLayout({
         <title>not car, yes tea</title>
       </head>
       <body>
-        <ChakraProvider>{children}</ChakraProvider>
+        {children}
       </body>
     </html>
   );
