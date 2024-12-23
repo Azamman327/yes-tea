@@ -1,8 +1,13 @@
 import '/src/styles/globals.css';
+import Sidebar from '../sidebar';
 
 export default function inventoryAdd() {
   return (
-    <div className="main-container">
-    </div>
+    <>
+      <Sidebar />
+      <div className="main-container">
+        <div>test</div>
+      </div>
+    </>
   );
 }

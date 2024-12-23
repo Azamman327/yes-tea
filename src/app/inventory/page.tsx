@@ -4,7 +4,7 @@ import Sidebar from './sidebar';
 export default function inventory() {
   return (
     <>
-      <Sidebar></Sidebar>
+      <Sidebar />
       <div className="main-container">
         
       </div>
