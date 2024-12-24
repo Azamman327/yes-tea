@@ -1,7 +1,29 @@
+'use client'
+
 import '/src/styles/globals.css';
 import Sidebar from '../sidebar';
 
+import { useState } from 'react'
+
+import FormControlLabel from '@mui/material/FormControlLabel';
+import MenuItem from '@mui/material/MenuItem';
+import Radio from '@mui/material/Radio';
+import RadioGroup from '@mui/material/RadioGroup';
+import Select, { SelectChangeEvent } from '@mui/material/Select';
+import TextField from '@mui/material/TextField';
+
 export default function inventoryAdd() {
+
+  const [type, setType] = useState('');
+
+  const handleTypeChange = (event: SelectChangeEvent) => {
+    setType(event.target.value as string);
+  };
+
+  const handleSubmit: React.FormEventHandler<HTMLFormElement> = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+  };
+
   return (
     <>
       <Sidebar />
@@ -10,48 +32,42 @@ export default function inventoryAdd() {
         <form>
           <div className='flex gap-40'>
             <div className='w-1/2 flex flex-col gap-8'>
-              <div className='flex flex-col'>
-                <span>브랜드</span>
-                <input name='brand'></input>
-              </div>
-              <div className='flex flex-col'>
-                <span>제품명</span>
-                <input name='name'></input>
-              </div>
+              <TextField name='brand' label="브랜드" variant="standard" />
+              <TextField name='name' label="제품명" variant="standard" />
               <div>
-                <span>티백 </span>
-                <input name='packagingtype' type='radio' checked className='mr-7'></input>
-                <span>잎차 </span>
-                <input name='packagingtype' type='radio'></input>
+                <RadioGroup name='packagingtype' row>
+                  <FormControlLabel value="teabag" control={<Radio />} label="티백" />
+                  <FormControlLabel value="looseleaf" control={<Radio />} label="잎차" />
+                </RadioGroup>
               </div>
               <div>
                 <span>개수 : </span>
-                <input name='amount' className='w-10'></input>
+                <TextField name='amount' variant='standard' size='small' className='w-10 text-right' />
                 <span>개</span>
               </div>
               <div className='flex flex-col'>
                 <span>유통기한</span>
                 <div>
-                  <input name='year' className='w-10'></input>
+                  <TextField name='year' variant='standard' size='small' className='w-12' />
                   <span className='mr-5'>년</span>
-                  <input name='month' className='w-10'></input>
+                  <TextField name='month' variant='standard' size='small' className='w-10' />
                   <span className='mr-5'>월</span>
-                  <input name='day' className='w-10'></input>
+                  <TextField name='day' variant='standard' size='small' className='w-10' />
                   <span className='mr-5'>일</span>
                 </div>
               </div>
               <div>
-                <span>차 종류</span>
-                <select name='type'>
-                  <option value="greentea">녹차</option>
-                  <option value="blacktea">홍차</option>
-                  <option value="herbtea">허브티</option>
-                  <option value="whitetea">백차</option>
-                  <option value="oolongtea">청차(우롱)</option>
-                  <option value="yellowtea">황차</option>
-                  <option value="darktea">흑차</option>
-                  <option value="none">그 외(모름)</option>
-                </select>
+                <span>차 종류 : </span>
+                <Select name='type' onChange={handleTypeChange} size='small' className='w-20'>
+                  <MenuItem value="greentea">녹차</MenuItem>
+                  <MenuItem value="blacktea">홍차</MenuItem>
+                  <MenuItem value="herbtea">허브티</MenuItem>
+                  <MenuItem value="whitetea">백차</MenuItem>
+                  <MenuItem value="oolongtea">청차(우롱)</MenuItem>
+                  <MenuItem value="yellowtea">황차</MenuItem>
+                  <MenuItem value="darktea">흑차</MenuItem>
+                  <MenuItem value="none">그 외(모름)</MenuItem>
+                </Select>
               </div>
             </div>
             <div className='w-1/2 flex flex-col gap-8'>
@@ -60,19 +76,19 @@ export default function inventoryAdd() {
               </div>
               <div>
                 <span>우림 시간 : </span>
-                <input name='minute' className='w-10'></input>
+                <TextField name='minute' variant='standard' size='small' className='w-10' />
                 <span className='mr-5'>분</span>
-                <input name='second' className='w-10'></input>
+                <TextField name='second' variant='standard' size='small' className='w-10' />
                 <span>초</span>
               </div>
               <div>
                 <span>권장 물 온도 : </span>
-                <input name='temperature' className='w-12'></input>
+                <TextField name='temperature' variant='standard' size='small' className='w-12' />
                 <span>C</span>
               </div>
               <div>
                 <span>1잔당 찻잎 권장량 : </span>
-                <input name='quantity' className='w-12'></input>
+                <TextField name='quantity' variant='standard' size='small' className='w-12' />
                 <span>C</span>
               </div>
             </div>
@@ -82,6 +98,7 @@ export default function inventoryAdd() {
             <button
               className="mt-4 w-1/4 rounded-md bg-green-500 py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg focus:bg-green-600 focus:shadow-none active:bg-green-700 hover:bg-green-600 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none mt-10"
               type="submit"
+              onSubmit={() => {handleSubmit}}
             >
               추가하기
             </button>
