@@ -68,33 +68,33 @@ export default function inventoryAdd() {
         <form onSubmit={onSubmit}>
           <div className='flex gap-40'>
             <div className='w-1/2 flex flex-col gap-8'>
-              <TextField {...register('brand')} label="브랜드" variant="standard" />
-              <TextField {...register('name')} label="제품명" variant="standard" />
+              <TextField {...register('brand')} label="브랜드" defaultValue="" variant="standard" />
+              <TextField {...register('name')} label="제품명" defaultValue="" variant="standard" />
               <div>
                 <RadioGroup {...register('packagingtype')} row>
-                  <FormControlLabel value="teabag" control={<Radio />} label="티백" />
-                  <FormControlLabel value="looseleaf" control={<Radio />} label="잎차" />
+                  <FormControlLabel value="teabag" control={<Radio />} label="티백" defaultValue=""/>
+                  <FormControlLabel value="looseleaf" control={<Radio />} label="잎차" defaultValue="" />
                 </RadioGroup>
               </div>
               <div>
                 <span>개수 : </span>
-                <TextField {...register('amount')} variant='standard' size='small' className='w-10 text-right' />
+                <TextField {...register('amount')} defaultValue={0} variant='standard' size='small' className='w-10 text-right' />
                 <span>개</span>
               </div>
               <div className='flex flex-col'>
                 <span>유통기한</span>
                 <div>
-                  <TextField {...register('year')} variant='standard' size='small' className='w-12' />
+                  <TextField {...register('year')} defaultValue="" variant='standard' size='small' className='w-12' />
                   <span className='mr-5'>년</span>
-                  <TextField {...register('month')} variant='standard' size='small' className='w-10' />
+                  <TextField {...register('month')} defaultValue="" variant='standard' size='small' className='w-10' />
                   <span className='mr-5'>월</span>
-                  <TextField {...register('day')} variant='standard' size='small' className='w-10' />
+                  <TextField {...register('day')} defaultValue="" variant='standard' size='small' className='w-10' />
                   <span className='mr-5'>일</span>
                 </div>
               </div>
               <div>
                 <span>차 종류 : </span>
-                <Select {...register('type')} onChange={handleTypeChange} size='small' className='w-20'>
+                <Select {...register('type')} defaultValue="" onChange={handleTypeChange} size='small' className='w-20'>
                   <MenuItem value="greentea">녹차</MenuItem>
                   <MenuItem value="blacktea">홍차</MenuItem>
                   <MenuItem value="herbtea">허브티</MenuItem>
@@ -112,20 +112,20 @@ export default function inventoryAdd() {
               </div>
               <div>
                 <span>우림 시간 : </span>
-                <TextField {...register('minute')} variant='standard' size='small' className='w-10' />
+                <TextField {...register('minute')} defaultValue={0} variant='standard' size='small' className='w-10' />
                 <span className='mr-5'>분</span>
-                <TextField {...register('second')} variant='standard' size='small' className='w-10' />
+                <TextField {...register('second')} defaultValue={0} variant='standard' size='small' className='w-10' />
                 <span>초</span>
               </div>
               <div>
                 <span>권장 물 온도 : </span>
-                <TextField {...register('temperature')} variant='standard' size='small' className='w-12' />
+                <TextField {...register('temperature')} defaultValue={0} variant='standard' size='small' className='w-12' />
                 <span>C</span>
               </div>
               <div>
                 <span>1잔당 찻잎 권장량 : </span>
-                <TextField {...register('quantity')} variant='standard' size='small' className='w-12' />
-                <span>C</span>
+                <TextField {...register('quantity')} defaultValue={0} variant='standard' size='small' className='w-12' />
+                <span>g</span>
               </div>
             </div>
           </div>
