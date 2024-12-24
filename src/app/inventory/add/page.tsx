@@ -6,6 +6,8 @@ import Sidebar from '../sidebar';
 import { useState } from 'react'
 import { useForm, SubmitHandler } from "react-hook-form"
 
+import { addTeaAndInventoryInfo } from "./requestHandler"
+
 import FormControlLabel from '@mui/material/FormControlLabel';
 import MenuItem from '@mui/material/MenuItem';
 import Radio from '@mui/material/Radio';
@@ -58,7 +60,12 @@ export default function inventoryAdd() {
     handleSubmit,
     formState: { errors },
   } = useForm<FormValues>()
-  const onSubmit = handleSubmit((data) => console.log(data))
+  const onSubmit = handleSubmit(
+    (data) => {
+      // console.log(data);
+      addTeaAndInventoryInfo(data);
+    }
+  )
 
   return (
     <>
