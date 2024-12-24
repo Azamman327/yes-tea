@@ -4,6 +4,7 @@ import '/src/styles/globals.css';
 import Sidebar from '../sidebar';
 
 import { useState } from 'react'
+import { useForm, SubmitHandler } from "react-hook-form"
 
 import FormControlLabel from '@mui/material/FormControlLabel';
 import MenuItem from '@mui/material/MenuItem';
@@ -11,6 +12,21 @@ import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import TextField from '@mui/material/TextField';
+
+type FormValues = {
+  brand: string
+  name: string
+  packagingtype: string
+  amount: number
+  year: string
+  month: string
+  day: string
+  type: string
+  minute: number
+  second: number
+  temperature: number
+  quantity: number
+}
 
 export default function inventoryAdd() {
 
@@ -20,45 +36,65 @@ export default function inventoryAdd() {
     setType(event.target.value as string);
   };
 
-  const handleSubmit: React.FormEventHandler<HTMLFormElement> = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-  };
+  useForm({
+    defaultValues: {
+      brand: "",
+      name: "",
+      packagingtype: "",
+      amount: 0,
+      year: "",
+      month: "",
+      day: "",
+      type: "",
+      minute: 0,
+      second: 0,
+      temperature: 0,
+      quantity: 0
+    }
+  })
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<FormValues>()
+  const onSubmit = handleSubmit((data) => console.log(data))
 
   return (
     <>
       <Sidebar />
       <div className="main-container">
         <div className='mb-5 text-2xl font-medium'>추가할 차 정보를 입력해 주세요.</div>
-        <form>
+        <form onSubmit={onSubmit}>
           <div className='flex gap-40'>
             <div className='w-1/2 flex flex-col gap-8'>
-              <TextField name='brand' label="브랜드" variant="standard" />
-              <TextField name='name' label="제품명" variant="standard" />
+              <TextField {...register('brand')} label="브랜드" variant="standard" />
+              <TextField {...register('name')} label="제품명" variant="standard" />
               <div>
-                <RadioGroup name='packagingtype' row>
+                <RadioGroup {...register('packagingtype')} row>
                   <FormControlLabel value="teabag" control={<Radio />} label="티백" />
                   <FormControlLabel value="looseleaf" control={<Radio />} label="잎차" />
                 </RadioGroup>
               </div>
               <div>
                 <span>개수 : </span>
-                <TextField name='amount' variant='standard' size='small' className='w-10 text-right' />
+                <TextField {...register('amount')} variant='standard' size='small' className='w-10 text-right' />
                 <span>개</span>
               </div>
               <div className='flex flex-col'>
                 <span>유통기한</span>
                 <div>
-                  <TextField name='year' variant='standard' size='small' className='w-12' />
+                  <TextField {...register('year')} variant='standard' size='small' className='w-12' />
                   <span className='mr-5'>년</span>
-                  <TextField name='month' variant='standard' size='small' className='w-10' />
+                  <TextField {...register('month')} variant='standard' size='small' className='w-10' />
                   <span className='mr-5'>월</span>
-                  <TextField name='day' variant='standard' size='small' className='w-10' />
+                  <TextField {...register('day')} variant='standard' size='small' className='w-10' />
                   <span className='mr-5'>일</span>
                 </div>
               </div>
               <div>
                 <span>차 종류 : </span>
-                <Select name='type' onChange={handleTypeChange} size='small' className='w-20'>
+                <Select {...register('type')} onChange={handleTypeChange} size='small' className='w-20'>
                   <MenuItem value="greentea">녹차</MenuItem>
                   <MenuItem value="blacktea">홍차</MenuItem>
                   <MenuItem value="herbtea">허브티</MenuItem>
@@ -76,19 +112,19 @@ export default function inventoryAdd() {
               </div>
               <div>
                 <span>우림 시간 : </span>
-                <TextField name='minute' variant='standard' size='small' className='w-10' />
+                <TextField {...register('minute')} variant='standard' size='small' className='w-10' />
                 <span className='mr-5'>분</span>
-                <TextField name='second' variant='standard' size='small' className='w-10' />
+                <TextField {...register('second')} variant='standard' size='small' className='w-10' />
                 <span>초</span>
               </div>
               <div>
                 <span>권장 물 온도 : </span>
-                <TextField name='temperature' variant='standard' size='small' className='w-12' />
+                <TextField {...register('temperature')} variant='standard' size='small' className='w-12' />
                 <span>C</span>
               </div>
               <div>
                 <span>1잔당 찻잎 권장량 : </span>
-                <TextField name='quantity' variant='standard' size='small' className='w-12' />
+                <TextField {...register('quantity')} variant='standard' size='small' className='w-12' />
                 <span>C</span>
               </div>
             </div>
