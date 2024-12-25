@@ -14,6 +14,7 @@ type FormValues = {
   second: number
   temperature: number
   quantity: number
+  watervolume: number
 }
 
 export async function addTeaAndInventoryInfo(data: FormValues) {
@@ -39,7 +40,8 @@ export async function addTeaAndInventoryInfo(data: FormValues) {
       minute: data.minute,
       second: data.second,
       temperature: data.temperature,
-      quantity: data.quantity
+      quantity: data.quantity,
+      watervolume: data.watervolume
     });
     console.log(response.data);
   } catch (error) {
