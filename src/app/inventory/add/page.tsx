@@ -28,6 +28,7 @@ type FormValues = {
   second: number
   temperature: number
   quantity: number
+  watervolume: number
 }
 
 export default function inventoryAdd() {
@@ -51,7 +52,8 @@ export default function inventoryAdd() {
       minute: 0,
       second: 0,
       temperature: 0,
-      quantity: 0
+      quantity: 0,
+      watervolume:0
     }
   })
 
@@ -62,7 +64,6 @@ export default function inventoryAdd() {
   } = useForm<FormValues>()
   const onSubmit = handleSubmit(
     (data) => {
-      // console.log(data);
       addTeaAndInventoryInfo(data);
     }
   )
@@ -133,6 +134,11 @@ export default function inventoryAdd() {
                 <span>1잔당 찻잎 권장량 : </span>
                 <TextField {...register('quantity')} defaultValue={0} variant='standard' size='small' className='w-12' />
                 <span>g</span>
+              </div>
+              <div>
+                <span>1잔당 권장 물 양 : </span>
+                <TextField {...register('watervolume')} defaultValue={0} variant='standard' size='small' className='w-12' />
+                <span>ml</span>
               </div>
             </div>
           </div>
