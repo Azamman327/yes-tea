@@ -18,21 +18,9 @@ type FormValues = {
 }
 
 export async function addTeaAndInventoryInfo(data: FormValues) {
-  console.log('start addTeaAndInventoryInfo');
+  let teaId: number = 0;
   try {
-    const response = await axios.post('/api/inventory/create', {
-      amount: data.amount,
-      year: data.year,
-      month: data.month,
-      day: data.day
-    });
-    console.log(response.data);
-  } catch (error) {
-    console.error(error);
-  }
-
-  try {
-    const response = await axios.post('/api/inventory/create', {
+    const response = await axios.post('/api/teas/create', {
       brand: data.brand,
       name: data.name,
       packagingtype: data.packagingtype,
@@ -42,6 +30,19 @@ export async function addTeaAndInventoryInfo(data: FormValues) {
       temperature: data.temperature,
       quantity: data.quantity,
       watervolume: data.watervolume
+    });
+    console.log(response.data);
+    teaId = response.data;
+  } catch (error) {
+    console.error(error);
+  }
+
+  try {
+    const response = await axios.post('/api/inventory/create', {
+      amount: data.amount,
+      year: data.year,
+      month: data.month,
+      day: data.day
     });
     console.log(response.data);
   } catch (error) {
