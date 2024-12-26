@@ -38,7 +38,12 @@ export async function addTeaAndInventoryInfo(data: FormValues) {
   }
 
   try {
+    const userId: number = Number(window.sessionStorage.getItem("userId"));
     const response = await axios.post('/api/inventory/create', {
+      inventoryId: {
+        userId: userId,
+        teaId: teaId
+      },
       amount: data.amount,
       year: data.year,
       month: data.month,
