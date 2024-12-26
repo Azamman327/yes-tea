@@ -33,6 +33,11 @@ type FormValues = {
 
 export default function inventoryAdd() {
 
+  const [selectedValue, setSelectedValue] = useState('teabag'); // 선택된 값을 관리하는 상태
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
+    setSelectedValue(event.target.value);
+  };
   const [type, setType] = useState('');
 
   const handleTypeChange = (event: SelectChangeEvent) => {
@@ -64,7 +69,8 @@ export default function inventoryAdd() {
   } = useForm<FormValues>()
   const onSubmit = handleSubmit(
     (data) => {
-      addTeaAndInventoryInfo(data);
+      // addTeaAndInventoryInfo(data);
+      console.log(data.packagingtype);
     }
   )
 
@@ -79,10 +85,18 @@ export default function inventoryAdd() {
               <TextField {...register('brand')} label="브랜드" defaultValue="" variant="standard" />
               <TextField {...register('name')} label="제품명" defaultValue="" variant="standard" />
               <div>
-                <RadioGroup {...register('packagingtype')} row>
+              <label>
+                <input type="radio" {...register('packagingtype')} value="teabag" checked={selectedValue === "teabag"} onChange={handleChange}/>
+                티백
+              </label>
+              <label>
+                <input type="radio" {...register('packagingtype')} value="looseleaf" checked={selectedValue === "looseleaf"} onChange={handleChange}/>
+                잎차
+              </label>
+                {/* <RadioGroup {...register('packagingtype')} row>
                   <FormControlLabel value="teabag" control={<Radio />} label="티백" defaultValue=""/>
                   <FormControlLabel value="looseleaf" control={<Radio />} label="잎차" defaultValue="" />
-                </RadioGroup>
+                </RadioGroup> */}
               </div>
               <div>
                 <span>개수 : </span>
