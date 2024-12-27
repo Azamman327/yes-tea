@@ -134,7 +134,7 @@ export default function inventoryAdd() {
               </div>
               <div>
                 <span>차 종류 : </span>
-                <Select {...register('type')} defaultValue="" onChange={handleTypeChange} size="small" className="w-20">
+                <Select {...register('type')} defaultValue="" onChange={handleTypeChange} size="small" className="w-25">
                   <MenuItem value="greentea">녹차</MenuItem>
                   <MenuItem value="blacktea">홍차</MenuItem>
                   <MenuItem value="herbtea">허브티</MenuItem>
