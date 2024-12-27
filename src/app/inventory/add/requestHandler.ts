@@ -45,9 +45,7 @@ export async function addTeaAndInventoryInfo(data: FormValues) {
         teaId: teaId,
       },
       amount: data.amount,
-      year: data.year,
-      month: data.month,
-      day: data.day,
+      expired: `${data.year}-${data.month}-${data.day}`,
     });
     console.log(response.data);
   } catch (error) {
