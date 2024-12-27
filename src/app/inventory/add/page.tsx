@@ -6,6 +6,8 @@ import Sidebar from '../sidebar';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 
+import { addTeaAndInventoryInfo } from './requestHandler';
+
 import FormControlLabel from '@mui/material/FormControlLabel';
 import MenuItem from '@mui/material/MenuItem';
 import Radio from '@mui/material/Radio';
@@ -29,10 +31,10 @@ type FormValues = {
 };
 
 export default function inventoryAdd() {
-  const [selectedValue, setSelectedValue] = useState('teabag'); // 선택된 값을 관리하는 상태
+  const [selectedPackaging, setSelectedPackaging] = useState('teabag'); // 선택된 값을 관리하는 상태
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
-    setSelectedValue(event.target.value);
+    setSelectedPackaging(event.target.value);
   };
   const [type, setType] = useState('');
 
@@ -64,8 +66,7 @@ export default function inventoryAdd() {
     formState: { errors },
   } = useForm<FormValues>();
   const onSubmit = handleSubmit((data) => {
-    // addTeaAndInventoryInfo(data);
-    console.log(data.packagingtype);
+    addTeaAndInventoryInfo(data);
   });
 
   return (
@@ -81,30 +82,45 @@ export default function inventoryAdd() {
               <div>
                 <FormControlLabel
                   {...register('packagingtype')}
-                  checked={selectedValue === 'teabag'}
+                  checked={selectedPackaging === 'teabag'}
                   value="teabag"
                   control={<Radio onChange={handleChange} />}
                   label="티백"
                 />
                 <FormControlLabel
                   {...register('packagingtype')}
-                  checked={selectedValue === 'looseleaf'}
+                  checked={selectedPackaging === 'looseleaf'}
                   value="looseleaf"
                   control={<Radio onChange={handleChange} />}
                   label="찻잎"
                 />
               </div>
-              <div>
-                <span>개수 : </span>
-                <TextField
-                  {...register('amount')}
-                  defaultValue={0}
-                  variant="standard"
-                  size="small"
-                  className="w-10 text-right"
-                />
-                <span>개</span>
-              </div>
+                {
+                  selectedPackaging == 'teabag' ?
+                  <div>
+                    <span>개수 : </span>
+                    <TextField
+                      {...register('amount')}
+                      defaultValue={0}
+                      variant="standard"
+                      size="small"
+                      className="w-10 text-right"
+                    />
+                    <span>개</span>
+                  </div>
+                  :
+                  <div>
+                    <span>양 : </span>
+                    <TextField
+                      {...register('amount')}
+                      defaultValue={0}
+                      variant="standard"
+                      size="small"
+                      className="w-10 text-right"
+                    />
+                    <span>(g)</span>
+                  </div>
+                }
               <div className="flex flex-col">
                 <span>유통기한</span>
                 <div>
@@ -153,17 +169,23 @@ export default function inventoryAdd() {
                 />
                 <span>C</span>
               </div>
-              <div>
-                <span>1잔당 찻잎 권장량 : </span>
-                <TextField
-                  {...register('quantity')}
-                  defaultValue={0}
-                  variant="standard"
-                  size="small"
-                  className="w-12"
-                />
-                <span>g</span>
-              </div>
+              {
+                selectedPackaging === 'looseleaf' ?
+                <div>
+                  <span>1잔당 찻잎 권장량 : </span>
+                  <TextField
+                    {...register('quantity')}
+                    defaultValue={0}
+                    variant="standard"
+                    size="small"
+                    className="w-12"
+                  />
+                  <span>g</span>
+                </div>
+                :
+                <></>
+              }
+                
               <div>
                 <span>1잔당 권장 물 양 : </span>
                 <TextField
