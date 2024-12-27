@@ -64,7 +64,7 @@ export default function form() {
     const onSubmit = handleSubmit((data) => {
       addTeaAndInventoryInfo(data);
     });
-    
+
   return (
     <>
     <div className="mb-5 text-2xl font-medium">추가할 차 정보를 입력해 주세요.</div>
@@ -140,7 +140,7 @@ export default function form() {
                 </Select>
               </div>
             </div>
-            <div className="w-1/2 flex flex-col gap-8">
+            <div className="w-1/2 flex flex-col gap-8 hidden sm:block">
               <div className="mb-10 text-lg font-medium">
                 아래 항목부터는 필수 입력 사항이 아니지만, <br />
                 입력시 티 타이머와 재고 관리를 연동할 수 있어요.

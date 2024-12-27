@@ -2,7 +2,7 @@ import Image from 'next/image';
 
 export default function sidebar() {
   return (
-    <div className="w-1/3">
+    <div className="w-1/3 hidden md:block">
       <Image
         src="/images/logo_text.png"
         width={180}
