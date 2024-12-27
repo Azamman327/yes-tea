@@ -85,16 +85,8 @@ export default function inventoryAdd() {
               <TextField {...register('brand')} label="브랜드" defaultValue="" variant="standard" />
               <TextField {...register('name')} label="제품명" defaultValue="" variant="standard" />
               <div>
-                {/* <label>
-                  <input type="radio" {...register('packagingtype')} value="teabag" checked={selectedValue === "teabag"} onChange={handleChange}/>
-                  티백
-                </label>
-                <label>
-                  <input type="radio" {...register('packagingtype')} value="looseleaf" checked={selectedValue === "looseleaf"} onChange={handleChange}/>
-                  잎차
-                </label> */}
-                <Radio {...register('packagingtype')} checked={selectedValue === 'teabag'} onChange={handleChange} value="teabag" />
-                <Radio {...register('packagingtype')} checked={selectedValue === 'looseleaf'} onChange={handleChange} value="looseleaf" />
+                <FormControlLabel {...register('packagingtype')} checked={selectedValue === 'teabag'} value="teabag" control={<Radio  onChange={handleChange}/>} label="티백" />
+                <FormControlLabel {...register('packagingtype')} checked={selectedValue === 'looseleaf'} value="looseleaf" control={<Radio  onChange={handleChange}/>} label="찻잎" />
               </div>
               <div>
                 <span>개수 : </span>
