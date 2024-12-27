@@ -1,14 +1,13 @@
-'use client'
+'use client';
 
 import '/src/styles/globals.css';
 import Image from 'next/image';
-import { useState } from 'react'
+import { useState } from 'react';
 
-import { login } from "./requestHandler"
+import { login } from './requestHandler';
 
 export default function Login() {
-
-  const [formData, setFormData] = useState({name:'', password:''});
+  const [formData, setFormData] = useState({ name: '', password: '' });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;

@@ -2,10 +2,9 @@
 import '/src/styles/globals.css';
 
 import { useState } from 'react';
-import { createUser } from "./requestHandler"
+import { createUser } from './requestHandler';
 
 export default function () {
-
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
