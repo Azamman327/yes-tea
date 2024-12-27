@@ -27,7 +27,7 @@ type FormValues = {
 
 
 export default function form() {
-  const [selectedPackaging, setSelectedPackaging] = useState('teabag'); // 선택된 값을 관리하는 상태
+  const [selectedPackaging, setSelectedPackaging] = useState('teabag');
   
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
       setSelectedPackaging(event.target.value);
@@ -140,56 +140,58 @@ export default function form() {
                 </Select>
               </div>
             </div>
-            <div className="w-1/2 flex flex-col gap-8 hidden sm:block">
-              <div className="mb-10 text-lg font-medium">
-                아래 항목부터는 필수 입력 사항이 아니지만, <br />
-                입력시 티 타이머와 재고 관리를 연동할 수 있어요.
-              </div>
-              <div>
-                <span>우림 시간 : </span>
-                <TextField {...register('minute')} defaultValue={0} variant="standard" size="small" className="w-10" />
-                <span className="mr-5">분</span>
-                <TextField {...register('second')} defaultValue={0} variant="standard" size="small" className="w-10" />
-                <span>초</span>
-              </div>
-              <div>
-                <span>권장 물 온도 : </span>
-                <TextField
-                  {...register('temperature')}
-                  defaultValue={0}
-                  variant="standard"
-                  size="small"
-                  className="w-12"
-                />
-                <span>C</span>
-              </div>
-              {
-                selectedPackaging === 'looseleaf' ?
+            <div className='w-1/2 hidden md:block'>
+              <div className="flex flex-col gap-8">
+                <div className="mb-10 text-lg font-medium">
+                  아래 항목부터는 필수 입력 사항이 아니지만, <br />
+                  입력시 티 타이머와 재고 관리를 연동할 수 있어요.
+                </div>
                 <div>
-                  <span>1잔당 찻잎 권장량 : </span>
+                  <span>우림 시간 : </span>
+                  <TextField {...register('minute')} defaultValue={0} variant="standard" size="small" className="w-10" />
+                  <span className="mr-5">분</span>
+                  <TextField {...register('second')} defaultValue={0} variant="standard" size="small" className="w-10" />
+                  <span>초</span>
+                </div>
+                <div>
+                  <span>권장 물 온도 : </span>
                   <TextField
-                    {...register('quantity')}
+                    {...register('temperature')}
                     defaultValue={0}
                     variant="standard"
                     size="small"
                     className="w-12"
                   />
-                  <span>g</span>
+                  <span>C</span>
                 </div>
-                :
-                <></>
-              }
-                
-              <div>
-                <span>1잔당 권장 물 양 : </span>
-                <TextField
-                  {...register('watervolume')}
-                  defaultValue={0}
-                  variant="standard"
-                  size="small"
-                  className="w-12"
-                />
-                <span>ml</span>
+                {
+                  selectedPackaging === 'looseleaf' ?
+                  <div>
+                    <span>1잔당 찻잎 권장량 : </span>
+                    <TextField
+                      {...register('quantity')}
+                      defaultValue={0}
+                      variant="standard"
+                      size="small"
+                      className="w-12"
+                    />
+                    <span>g</span>
+                  </div>
+                  :
+                  <></>
+                }
+                  
+                <div>
+                  <span>1잔당 권장 물 양 : </span>
+                  <TextField
+                    {...register('watervolume')}
+                    defaultValue={0}
+                    variant="standard"
+                    size="small"
+                    className="w-12"
+                  />
+                  <span>ml</span>
+                </div>
               </div>
             </div>
           </div>
