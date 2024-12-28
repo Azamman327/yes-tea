@@ -15,6 +15,8 @@ import {
   SelectTrigger,
   SelectValueText,
 } from '@/components/ui/select';
+import { Flex } from "@chakra-ui/react"
+
 
 type FormValues = {
   brand: string;
@@ -80,14 +82,19 @@ export default function form() {
       <div className="mb-5 text-2xl font-medium">추가할 차 정보를 입력해 주세요.</div>
       <form onSubmit={onSubmit}>
         <div className="flex gap-40">
-          <div className="w-1/2 flex flex-col gap-8">
-            <Input {...register('brand')} placeholder="브랜드" variant="subtle" />
-            <Input {...register('name')} placeholder="제품명" variant="subtle" />
+          <div className="w-1/2 flex flex-col gap-6">
+            <Flex direction="column">
+              <span>브랜드</span>
+              <Input {...register('brand')} placeholder="브랜드" variant="outline" borderWidth="1px" mb="5"/>
+              <span>제품명</span>
+              <Input {...register('name')} placeholder="제품명" variant="outline" borderWidth="1px"/>
+            </Flex>
             <div>
               <RadioGroup
                 {...register('packagingtype')}
                 value={selectedPackaging}
                 onValueChange={(e) => setSelectedPackaging(e.value)}
+                variant="subtle"
               >
                 <HStack gap="6">
                   <Radio value="teabag">티백</Radio>
@@ -98,31 +105,32 @@ export default function form() {
             {selectedPackaging == 'teabag' ? (
               <div>
                 <span>개수 : </span>
-                <Input {...register('amount')} variant="subtle" className="w-10" />
+                <Input {...register('amount')} variant="outline" borderWidth="1px" size="xs" className="w-10" />
                 <span>개</span>
               </div>
             ) : (
               <div>
                 <span>양 : </span>
-                <Input {...register('amount')} variant="subtle" className="w-10" />
+                <Input {...register('amount')} variant="outline" borderWidth="1px" size="xs" className="w-10" />
                 <span>(g)</span>
               </div>
             )}
             <div className="flex flex-col">
               <span>유통기한</span>
               <div>
-                <Input {...register('year')} variant="subtle" className="w-12" />
+                <Input {...register('year')} variant="outline" borderWidth="1px" size="xs" width="24" />
                 <span className="mr-5">년</span>
-                <Input {...register('month')} variant="subtle" className="w-10" />
+                <Input {...register('month')} variant="outline" borderWidth="1px" size="xs" className="w-10" />
                 <span className="mr-5">월</span>
-                <Input {...register('day')} variant="subtle" className="w-10" />
+                <Input {...register('day')} variant="outline" borderWidth="1px" size="xs" className="w-10" />
                 <span className="mr-5">일</span>
               </div>
             </div>
             <div>
-              <SelectRoot {...register('type')} collection={types} size="sm" className="w-20">
+              <SelectRoot {...register('type')} collection={types} size="sm" className="w-25">
+                <SelectLabel>차 종류 : </SelectLabel>
                 <SelectTrigger>
-                  <SelectLabel>차 종류 : </SelectLabel>
+                  <SelectValueText placeholder="Select tea type"/>
                 </SelectTrigger>
                 <SelectContent>
                   {types.items.map((type) => (
@@ -142,20 +150,20 @@ export default function form() {
               </div>
               <div>
                 <span>우림 시간 : </span>
-                <Input {...register('minute')} variant="subtle" className="w-10" />
+                <Input {...register('minute')} variant="outline" borderWidth="1px" size="xs" className="w-10" />
                 <span className="mr-5">분</span>
-                <Input {...register('second')} variant="subtle" className="w-10" />
+                <Input {...register('second')} variant="outline" borderWidth="1px" size="xs" className="w-10" />
                 <span>초</span>
               </div>
               <div>
                 <span>권장 물 온도 : </span>
-                <Input {...register('temperature')} variant="subtle" className="w-12" />
+                <Input {...register('temperature')} variant="outline" borderWidth="1px" size="xs" className="w-12" />
                 <span>C</span>
               </div>
               {selectedPackaging === 'looseleaf' ? (
                 <div>
                   <span>1잔당 찻잎 권장량 : </span>
-                  <Input {...register('quantity')} variant="subtle" className="w-12" />
+                  <Input {...register('quantity')} variant="outline" borderWidth="1px" size="xs" className="w-12" />
                   <span>g</span>
                 </div>
               ) : (
@@ -164,7 +172,7 @@ export default function form() {
 
               <div>
                 <span>1잔당 권장 물 양 : </span>
-                <Input {...register('watervolume')} variant="subtle" className="w-12" />
+                <Input {...register('watervolume')} variant="outline" borderWidth="1px" size="xs" className="w-12" />
                 <span>ml</span>
               </div>
             </div>
