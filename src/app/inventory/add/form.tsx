@@ -74,8 +74,8 @@ export default function form() {
       <form onSubmit={onSubmit}>
         <div className="flex gap-40">
           <div className="w-1/2 flex flex-col gap-8">
-            <Input {...register('brand')} placeholder="브랜드" variant="subtle" className="w-10" />
-            <Input {...register('name')} placeholder="제품명" variant="subtle" className="w-10" />
+            <Input {...register('brand')} placeholder="브랜드" variant="subtle" />
+            <Input {...register('name')} placeholder="제품명" variant="subtle" />
             <div>
               <RadioGroup
                 {...register('packagingtype')}
@@ -91,36 +91,24 @@ export default function form() {
             {selectedPackaging == 'teabag' ? (
               <div>
                 <span>개수 : </span>
-                <TextField
-                  {...register('amount')}
-                  defaultValue={0}
-                  variant="standard"
-                  size="small"
-                  className="w-10 text-right"
-                />
+                <Input {...register('amount')} variant="subtle" className="w-10" />
                 <span>개</span>
               </div>
             ) : (
               <div>
                 <span>양 : </span>
-                <TextField
-                  {...register('amount')}
-                  defaultValue={0}
-                  variant="standard"
-                  size="small"
-                  className="w-10 text-right"
-                />
+                <Input {...register('amount')} variant="subtle" className="w-10" />
                 <span>(g)</span>
               </div>
             )}
             <div className="flex flex-col">
               <span>유통기한</span>
               <div>
-                <TextField {...register('year')} defaultValue="" variant="standard" size="small" className="w-12" />
+                <Input {...register('year')} variant="subtle" className="w-12" />
                 <span className="mr-5">년</span>
-                <TextField {...register('month')} defaultValue="" variant="standard" size="small" className="w-10" />
+                <Input {...register('month')} variant="subtle" className="w-10" />
                 <span className="mr-5">월</span>
-                <TextField {...register('day')} defaultValue="" variant="standard" size="small" className="w-10" />
+                <Input {...register('day')} variant="subtle" className="w-10" />
                 <span className="mr-5">일</span>
               </div>
             </div>
