@@ -6,7 +6,7 @@ import { addTeaAndInventoryInfo } from './requestHandler';
 import { Input } from '@chakra-ui/react';
 import { Radio, RadioGroup } from '@/components/ui/radio';
 import { HStack } from '@chakra-ui/react';
-import { createListCollection } from "@chakra-ui/react"
+import { createListCollection } from '@chakra-ui/react';
 import {
   SelectContent,
   SelectItem,
@@ -14,7 +14,7 @@ import {
   SelectRoot,
   SelectTrigger,
   SelectValueText,
-} from "@/components/ui/select"
+} from '@/components/ui/select';
 
 type FormValues = {
   brand: string;
@@ -45,8 +45,8 @@ export default function form() {
       { label: '황차', value: 'yellowtea' },
       { label: '흑차', value: 'darktea' },
       { label: '그 외(모름)', value: 'none' },
-    ]
-  })
+    ],
+  });
 
   useForm({
     defaultValues: {
@@ -120,14 +120,15 @@ export default function form() {
               </div>
             </div>
             <div>
-              <SelectRoot {...register('type')} collection={types} size="sm" className="w-25">
-                <SelectLabel>차 종류 : </SelectLabel>
+              <SelectRoot {...register('type')} collection={types} size="sm" className="w-20">
                 <SelectTrigger>
-                  <SelectValueText placeholder="차 종류를 선택하세요" />
+                  <SelectLabel>차 종류 : </SelectLabel>
                 </SelectTrigger>
                 <SelectContent>
                   {types.items.map((type) => (
-                    <SelectItem item={type} key={type.value}>{type.label}</SelectItem>
+                    <SelectItem item={type} key={type.value}>
+                      {type.label}
+                    </SelectItem>
                   ))}
                 </SelectContent>
               </SelectRoot>
@@ -141,32 +142,20 @@ export default function form() {
               </div>
               <div>
                 <span>우림 시간 : </span>
-                <TextField {...register('minute')} defaultValue={0} variant="standard" size="small" className="w-10" />
+                <Input {...register('minute')} variant="subtle" className="w-10" />
                 <span className="mr-5">분</span>
-                <TextField {...register('second')} defaultValue={0} variant="standard" size="small" className="w-10" />
+                <Input {...register('second')} variant="subtle" className="w-10" />
                 <span>초</span>
               </div>
               <div>
                 <span>권장 물 온도 : </span>
-                <TextField
-                  {...register('temperature')}
-                  defaultValue={0}
-                  variant="standard"
-                  size="small"
-                  className="w-12"
-                />
+                <Input {...register('temperature')} variant="subtle" className="w-12" />
                 <span>C</span>
               </div>
               {selectedPackaging === 'looseleaf' ? (
                 <div>
                   <span>1잔당 찻잎 권장량 : </span>
-                  <TextField
-                    {...register('quantity')}
-                    defaultValue={0}
-                    variant="standard"
-                    size="small"
-                    className="w-12"
-                  />
+                  <Input {...register('quantity')} variant="subtle" className="w-12" />
                   <span>g</span>
                 </div>
               ) : (
@@ -175,13 +164,7 @@ export default function form() {
 
               <div>
                 <span>1잔당 권장 물 양 : </span>
-                <TextField
-                  {...register('watervolume')}
-                  defaultValue={0}
-                  variant="standard"
-                  size="small"
-                  className="w-12"
-                />
+                <Input {...register('watervolume')} variant="subtle" className="w-12" />
                 <span>ml</span>
               </div>
             </div>
