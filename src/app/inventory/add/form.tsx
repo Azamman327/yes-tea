@@ -6,12 +6,15 @@ import { addTeaAndInventoryInfo } from './requestHandler';
 import { Input } from '@chakra-ui/react';
 import { Radio, RadioGroup } from '@/components/ui/radio';
 import { HStack } from '@chakra-ui/react';
-
-// import FormControlLabel from '@mui/material/FormControlLabel';
-// import MenuItem from '@mui/material/MenuItem';
-// import Radio from '@mui/material/Radio';
-// import Select, { SelectChangeEvent } from '@mui/material/Select';
-// import TextField from '@mui/material/TextField';
+import { createListCollection } from "@chakra-ui/react"
+import {
+  SelectContent,
+  SelectItem,
+  SelectLabel,
+  SelectRoot,
+  SelectTrigger,
+  SelectValueText,
+} from "@/components/ui/select"
 
 type FormValues = {
   brand: string;
@@ -32,14 +35,18 @@ type FormValues = {
 export default function form() {
   const [selectedPackaging, setSelectedPackaging] = useState('teabag');
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
-    setSelectedPackaging(event.target.value);
-  };
-  const [type, setType] = useState('');
-
-  const handleTypeChange = (event: SelectChangeEvent) => {
-    setType(event.target.value as string);
-  };
+  const types = createListCollection({
+    items: [
+      { label: '녹차', value: 'greentea' },
+      { label: '홍차', value: 'blacktea' },
+      { label: '허브티', value: 'herbtea' },
+      { label: '백차', value: 'whitetea' },
+      { label: '청차(우롱)', value: 'oolongtea' },
+      { label: '황차', value: 'yellowtea' },
+      { label: '흑차', value: 'darktea' },
+      { label: '그 외(모름)', value: 'none' },
+    ]
+  })
 
   useForm({
     defaultValues: {
@@ -113,17 +120,17 @@ export default function form() {
               </div>
             </div>
             <div>
-              <span>차 종류 : </span>
-              <Select {...register('type')} defaultValue="" onChange={handleTypeChange} size="small" className="w-25">
-                <MenuItem value="greentea">녹차</MenuItem>
-                <MenuItem value="blacktea">홍차</MenuItem>
-                <MenuItem value="herbtea">허브티</MenuItem>
-                <MenuItem value="whitetea">백차</MenuItem>
-                <MenuItem value="oolongtea">청차(우롱)</MenuItem>
-                <MenuItem value="yellowtea">황차</MenuItem>
-                <MenuItem value="darktea">흑차</MenuItem>
-                <MenuItem value="none">그 외(모름)</MenuItem>
-              </Select>
+              <SelectRoot {...register('type')} collection={types} size="sm" className="w-25">
+                <SelectLabel>차 종류 : </SelectLabel>
+                <SelectTrigger>
+                  <SelectValueText placeholder="차 종류를 선택하세요" />
+                </SelectTrigger>
+                <SelectContent>
+                  {types.items.map((type) => (
+                    <SelectItem item={type} key={type.value}>{type.label}</SelectItem>
+                  ))}
+                </SelectContent>
+              </SelectRoot>
             </div>
           </div>
           <div className="w-1/2 hidden md:block">
