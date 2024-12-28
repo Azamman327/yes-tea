@@ -1,7 +1,5 @@
 'use client';
 
-import { useState } from 'react';
-
 import { Button } from "@/components/ui/button"
 import { Input } from "@chakra-ui/react";
 
@@ -38,8 +36,8 @@ const EditModal: React.FC = () => {
           </DialogHeader>
 
           <DialogBody>
-            <Input placeholder="Outline" variant="outline" onChange={(e) => timeStore.updateMinutesState(Number(e.target.value))}/>분
-            <Input placeholder="Outline" variant="outline" onChange={(e) => timeStore.updateSecondsState(Number(e.target.value))}/>초
+            <Input variant="subtle" size="xs" value={timeStore.minutes} onChange={(e) => timeStore.updateMinutesState(Number(e.target.value))} className='w-10'/>분
+            <Input variant="subtle" size="xs" value={timeStore.seconds} onChange={(e) => timeStore.updateSecondsState(Number(e.target.value))} className='w-10 ml-10'/>초
           </DialogBody>
 
           <DialogFooter>
