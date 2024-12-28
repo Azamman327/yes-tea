@@ -1,6 +1,6 @@
 'use client';
 import { useState } from 'react';
-import { useForm } from 'react-hook-form';
+import { useForm, Controller } from 'react-hook-form';
 
 import { addTeaAndInventoryInfo } from './requestHandler';
 import { Input } from '@chakra-ui/react';
@@ -70,6 +70,7 @@ export default function form() {
 
   const {
     register,
+    control,
     handleSubmit,
     formState: { errors },
   } = useForm<FormValues>();
@@ -90,17 +91,24 @@ export default function form() {
               <Input {...register('name')} placeholder="제품명" variant="outline" borderWidth="1px"/>
             </Flex>
             <div>
-              <RadioGroup
-                {...register('packagingtype')}
-                value={selectedPackaging}
-                onValueChange={(e) => setSelectedPackaging(e.value)}
-                variant="subtle"
-              >
-                <HStack gap="6">
-                  <Radio value="teabag">티백</Radio>
-                  <Radio value="looseleaf">잎차</Radio>
-                </HStack>
-              </RadioGroup>
+              <Controller
+                name="packagingtype"
+                control={control}
+                defaultValue="teabag" // 초기값 설정
+                render={({ field }) => (
+                  <RadioGroup 
+                    {...field}
+                    value={selectedPackaging}
+                    onValueChange={(e) => setSelectedPackaging(e.value)}
+                    variant="subtle"
+                  >
+                    <HStack gap="6">
+                      <Radio value="teabag">티백</Radio>
+                      <Radio value="looseleaf">잎차</Radio>
+                    </HStack>
+                  </RadioGroup>
+                )}
+              />
             </div>
             {selectedPackaging == 'teabag' ? (
               <div>
