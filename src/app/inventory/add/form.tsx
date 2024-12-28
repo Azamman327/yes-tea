@@ -3,11 +3,15 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 
 import { addTeaAndInventoryInfo } from './requestHandler';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import MenuItem from '@mui/material/MenuItem';
-import Radio from '@mui/material/Radio';
-import Select, { SelectChangeEvent } from '@mui/material/Select';
-import TextField from '@mui/material/TextField';
+import { Input } from "@chakra-ui/react";
+import { Radio, RadioGroup } from "@/components/ui/radio"
+import { HStack } from "@chakra-ui/react"
+
+// import FormControlLabel from '@mui/material/FormControlLabel';
+// import MenuItem from '@mui/material/MenuItem';
+// import Radio from '@mui/material/Radio';
+// import Select, { SelectChangeEvent } from '@mui/material/Select';
+// import TextField from '@mui/material/TextField';
 
 type FormValues = {
   brand: string;
@@ -27,6 +31,7 @@ type FormValues = {
 
 
 export default function form() {
+
   const [selectedPackaging, setSelectedPackaging] = useState('teabag');
   
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
@@ -71,9 +76,15 @@ export default function form() {
         <form onSubmit={onSubmit}>
           <div className="flex gap-40">
             <div className="w-1/2 flex flex-col gap-8">
-              <TextField {...register('brand')} label="브랜드" defaultValue="" variant="standard" />
-              <TextField {...register('name')} label="제품명" defaultValue="" variant="standard" />
+              <Input {...register('brand')} placeholder="브랜드" variant="subtle" className='w-10'/>
+              <Input {...register('name')} placeholder="제품명" variant="subtle" className='w-10'/>
               <div>
+              <RadioGroup {...register('packagingtype')} value={selectedPackaging} onValueChange={(e) => setSelectedPackaging(e.value)}>
+                <HStack gap="6">
+                  <Radio value="teabag">티백</Radio>
+                  <Radio value="looseleaf">잎차</Radio>
+                </HStack>
+              </RadioGroup>
                 <FormControlLabel
                   {...register('packagingtype')}
                   checked={selectedPackaging === 'teabag'}
