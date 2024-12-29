@@ -9,7 +9,7 @@ const config: Config = {
   theme: {
     extend: {
       screens: {
-        phone: '480px',      
+        phone: '480px',
       },
       colors: {
         background: '#FFF8F3',

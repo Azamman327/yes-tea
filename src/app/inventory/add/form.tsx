@@ -15,8 +15,7 @@ import {
   SelectTrigger,
   SelectValueText,
 } from '@/components/ui/select';
-import { Flex } from "@chakra-ui/react"
-
+import { Flex } from '@chakra-ui/react';
 
 type FormValues = {
   brand: string;
@@ -80,15 +79,17 @@ export default function form() {
 
   return (
     <>
-      <div className="mb-5 text-sm phone:text-lg md:text-xl font-medium md:text-2xl">추가할 차 정보를 입력해 주세요.</div>
+      <div className="mb-5 text-sm phone:text-lg md:text-xl font-medium md:text-2xl">
+        추가할 차 정보를 입력해 주세요.
+      </div>
       <form onSubmit={onSubmit}>
         <div className="flex gap-10 lg:gap-40 flex-col md:flex-row">
           <div className="w-full md:w-1/2 flex flex-col gap-6 whitespace-nowrap">
             <Flex direction="column">
               <span>브랜드</span>
-              <Input {...register('brand')} placeholder="브랜드" variant="outline" borderWidth="1px" mb="5"/>
+              <Input {...register('brand')} placeholder="브랜드" variant="outline" borderWidth="1px" mb="5" />
               <span>제품명</span>
-              <Input {...register('name')} placeholder="제품명" variant="outline" borderWidth="1px"/>
+              <Input {...register('name')} placeholder="제품명" variant="outline" borderWidth="1px" />
             </Flex>
             <div>
               <Controller
@@ -96,7 +97,7 @@ export default function form() {
                 control={control}
                 defaultValue="teabag" // 초기값 설정
                 render={({ field }) => (
-                  <RadioGroup 
+                  <RadioGroup
                     {...field}
                     value={selectedPackaging}
                     onValueChange={(e) => setSelectedPackaging(e.value)}
@@ -125,7 +126,7 @@ export default function form() {
             )}
             <div className="flex flex-col">
               <span>유통기한</span>
-              <div className='flex flex-wrap'>
+              <div className="flex flex-wrap">
                 <div>
                   <Input {...register('year')} variant="outline" borderWidth="1px" size="xs" width="24" />
                   <span className="mr-5">년</span>
@@ -144,7 +145,7 @@ export default function form() {
               <SelectRoot {...register('type')} collection={types} size="sm" className="w-25">
                 <SelectLabel>차 종류 : </SelectLabel>
                 <SelectTrigger>
-                  <SelectValueText placeholder="Select tea type"/>
+                  <SelectValueText placeholder="Select tea type" />
                 </SelectTrigger>
                 <SelectContent>
                   {types.items.map((type) => (
@@ -159,16 +160,17 @@ export default function form() {
           <div className="w-full md:w-1/2">
             <div className="flex flex-col gap-8">
               <div className="mb-10 text-sm phone:text-lg font-medium whitespace-nowrap">
-                <span className='hidden phone:inline-block'>아래 항목부터는</span> 필수 입력 사항이 아니지만, <wbr/>
-                입력시 티 타이머와 재고 관리를 <wbr/>연동할 수 있어요.
+                <span className="hidden phone:inline-block">아래 항목부터는</span> 필수 입력 사항이 아니지만, <wbr />
+                입력시 티 타이머와 재고 관리를 <wbr />
+                연동할 수 있어요.
               </div>
               <div>
                 <span>우림 시간 : </span>
-                <div className='inline-block'>
+                <div className="inline-block">
                   <Input {...register('minute')} variant="outline" borderWidth="1px" size="xs" className="w-10" />
                   <span className="mr-5">분</span>
                 </div>
-                <div className='inline-block'>
+                <div className="inline-block">
                   <Input {...register('second')} variant="outline" borderWidth="1px" size="xs" className="w-10" />
                   <span>초</span>
                 </div>
