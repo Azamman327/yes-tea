@@ -80,9 +80,9 @@ export default function form() {
 
   return (
     <>
-      <div className="mb-5 text-2xl font-medium">추가할 차 정보를 입력해 주세요.</div>
+      <div className="mb-5 text-sm phone:text-lg md:text-xl font-medium md:text-2xl">추가할 차 정보를 입력해 주세요.</div>
       <form onSubmit={onSubmit}>
-        <div className="flex gap-40 flex-col md:flex-row">
+        <div className="flex gap-10 lg:gap-40 flex-col md:flex-row">
           <div className="w-full md:w-1/2 flex flex-col gap-6 whitespace-nowrap">
             <Flex direction="column">
               <span>브랜드</span>
@@ -125,13 +125,19 @@ export default function form() {
             )}
             <div className="flex flex-col">
               <span>유통기한</span>
-              <div>
-                <Input {...register('year')} variant="outline" borderWidth="1px" size="xs" width="24" />
-                <span className="mr-5">년</span>
-                <Input {...register('month')} variant="outline" borderWidth="1px" size="xs" className="w-10" />
-                <span className="mr-5">월</span>
-                <Input {...register('day')} variant="outline" borderWidth="1px" size="xs" className="w-10" />
-                <span className="mr-5">일</span>
+              <div className='flex flex-wrap'>
+                <div>
+                  <Input {...register('year')} variant="outline" borderWidth="1px" size="xs" width="24" />
+                  <span className="mr-5">년</span>
+                </div>
+                <div>
+                  <Input {...register('month')} variant="outline" borderWidth="1px" size="xs" className="w-10" />
+                  <span className="mr-5">월</span>
+                </div>
+                <div>
+                  <Input {...register('day')} variant="outline" borderWidth="1px" size="xs" className="w-10" />
+                  <span className="mr-5">일</span>
+                </div>
               </div>
             </div>
             <div>
@@ -152,21 +158,27 @@ export default function form() {
           </div>
           <div className="w-full md:w-1/2">
             <div className="flex flex-col gap-8">
-              <div className="mb-10 text-lg font-medium whitespace-nowrap">
-                아래 항목부터는 필수 입력 사항이 아니지만, <wbr/>
-                입력시 티 타이머와 재고 관리를 연동할 수 있어요.
+              <div className="mb-10 text-sm phone:text-lg font-medium whitespace-nowrap">
+                <span className='hidden phone:inline-block'>아래 항목부터는</span> 필수 입력 사항이 아니지만, <wbr/>
+                입력시 티 타이머와 재고 관리를 <wbr/>연동할 수 있어요.
               </div>
               <div>
                 <span>우림 시간 : </span>
-                <Input {...register('minute')} variant="outline" borderWidth="1px" size="xs" className="w-10" />
-                <span className="mr-5">분</span>
-                <Input {...register('second')} variant="outline" borderWidth="1px" size="xs" className="w-10" />
-                <span>초</span>
+                <div className='inline-block'>
+                  <Input {...register('minute')} variant="outline" borderWidth="1px" size="xs" className="w-10" />
+                  <span className="mr-5">분</span>
+                </div>
+                <div className='inline-block'>
+                  <Input {...register('second')} variant="outline" borderWidth="1px" size="xs" className="w-10" />
+                  <span>초</span>
+                </div>
               </div>
               <div>
-                <span>권장 물 온도 : </span>
-                <Input {...register('temperature')} variant="outline" borderWidth="1px" size="xs" className="w-12" />
-                <span>C</span>
+                <div>
+                  <span>권장 물 온도 : </span>
+                  <Input {...register('temperature')} variant="outline" borderWidth="1px" size="xs" className="w-12" />
+                  <span>C</span>
+                </div>
               </div>
               {selectedPackaging === 'looseleaf' ? (
                 <div>
@@ -187,9 +199,9 @@ export default function form() {
           </div>
         </div>
 
-        <div className="flex flex-row justify-evenly mt-10">
+        <div className="flex flex-row justify-around mt-10">
           <button
-            className="mt-4 w-1/4 rounded-md bg-green-500 py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg focus:bg-green-600 focus:shadow-none active:bg-green-700 hover:bg-green-600 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none mt-10"
+            className="mt-4 w-1/3 phone:w-1/4 rounded-md bg-green-500 py-1 px-2 sm:py-2 sm:px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg focus:bg-green-600 focus:shadow-none active:bg-green-700 hover:bg-green-600 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none mt-10"
             type="submit"
             onSubmit={() => {
               handleSubmit;
@@ -198,7 +210,7 @@ export default function form() {
             추가하기
           </button>
           <button
-            className="mt-4 w-1/4 rounded-md bg-slate-300 py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg focus:bg-slate-400 focus:shadow-none active:bg-slate-500 hover:bg-slate-400 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none mt-10"
+            className="mt-4 w-1/3 phone:w-1/4 rounded-md bg-slate-300 py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg focus:bg-slate-400 focus:shadow-none active:bg-slate-500 hover:bg-slate-400 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none mt-10"
             type="reset"
           >
             취소
