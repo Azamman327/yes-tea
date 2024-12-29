@@ -82,7 +82,7 @@ export default function form() {
     <>
       <div className="mb-5 text-2xl font-medium">추가할 차 정보를 입력해 주세요.</div>
       <form onSubmit={onSubmit}>
-        <div className="flex gap-40">
+        <div className="flex gap-40 flex-col md:flex-row">
           <div className="w-full md:w-1/2 flex flex-col gap-6 whitespace-nowrap">
             <Flex direction="column">
               <span>브랜드</span>
@@ -150,7 +150,7 @@ export default function form() {
               </SelectRoot>
             </div>
           </div>
-          <div className="w-1/2 hidden md:block">
+          <div className="w-1/2">
             <div className="flex flex-col gap-8">
               <div className="mb-10 text-lg font-medium whitespace-nowrap">
                 아래 항목부터는 필수 입력 사항이 아니지만, <wbr/>
