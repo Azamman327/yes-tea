@@ -150,7 +150,7 @@ export default function form() {
               </SelectRoot>
             </div>
           </div>
-          <div className="w-1/2">
+          <div className="w-full md:w-1/2">
             <div className="flex flex-col gap-8">
               <div className="mb-10 text-lg font-medium whitespace-nowrap">
                 아래 항목부터는 필수 입력 사항이 아니지만, <wbr/>
