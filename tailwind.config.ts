@@ -8,6 +8,9 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      screens: {
+        phone: '480px',
+      },
       colors: {
         background: '#FFF8F3',
         pointgreen: '#17C37B',

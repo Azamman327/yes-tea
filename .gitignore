@@ -37,3 +37,5 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
+# Chakra UI snippet
+/src/components/ui/

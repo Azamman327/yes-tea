@@ -16,9 +16,19 @@ body {
 }
 
 .main-container {
-  width: 100%;
+  width: 100vw;
   margin: 0 auto;
   padding: 7rem 5rem;
   background-color: #fff8f3;
   min-height: 100vh;
+}
+
+@media (min-width: 320px) {
+  .main-container {
+    width: 100vw;
+    margin: 0 auto;
+    padding: 5rem 3rem;
+    background-color: #fff8f3;
+    min-height: 100vh;
+  }
 }
