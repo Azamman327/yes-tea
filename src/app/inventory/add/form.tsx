@@ -43,9 +43,9 @@ export default function form() {
       { label: '홍차', value: 'blacktea' },
       { label: '허브티', value: 'herbtea' },
       { label: '백차', value: 'whitetea' },
-      { label: '청차(우롱)', value: 'oolongtea' },
-      { label: '황차', value: 'yellowtea' },
-      { label: '흑차', value: 'darktea' },
+      { label: '청차(우롱차)', value: 'oolongtea' },
+      { label: '흑차(보이차)', value: 'darktea' },
+      { label: '블렌드', value: 'blendtea' },
       { label: '그 외(모름)', value: 'none' },
     ],
   });
@@ -83,7 +83,7 @@ export default function form() {
       <div className="mb-5 text-2xl font-medium">추가할 차 정보를 입력해 주세요.</div>
       <form onSubmit={onSubmit}>
         <div className="flex gap-40">
-          <div className="w-1/2 flex flex-col gap-6">
+          <div className="w-full md:w-1/2 flex flex-col gap-6 whitespace-nowrap">
             <Flex direction="column">
               <span>브랜드</span>
               <Input {...register('brand')} placeholder="브랜드" variant="outline" borderWidth="1px" mb="5"/>
@@ -152,8 +152,8 @@ export default function form() {
           </div>
           <div className="w-1/2 hidden md:block">
             <div className="flex flex-col gap-8">
-              <div className="mb-10 text-lg font-medium">
-                아래 항목부터는 필수 입력 사항이 아니지만, <br />
+              <div className="mb-10 text-lg font-medium whitespace-nowrap">
+                아래 항목부터는 필수 입력 사항이 아니지만, <wbr/>
                 입력시 티 타이머와 재고 관리를 연동할 수 있어요.
               </div>
               <div>
