@@ -2,7 +2,7 @@
 
 import { Stack, Table } from '@chakra-ui/react';
 
-export default function Demo() {
+export default function Tealist():JSX.Element {
   return (
     <Stack gap="10">
       <Table.Root size="lg" variant="outline">
