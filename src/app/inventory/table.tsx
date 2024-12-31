@@ -16,8 +16,8 @@ export default function Demo() {
           </Table.Row>
         </Table.Header>
         <Table.Body>
-          {items.map((item) => (
-            <Table.Row key={item.id}>
+          {items.map((item, index) => (
+            <Table.Row key={index}>
               <Table.Cell>{item.brand}</Table.Cell>
               <Table.Cell>{item.name}</Table.Cell>
               <Table.Cell>{item.packagingtype}</Table.Cell>
@@ -33,9 +33,9 @@ export default function Demo() {
 
 const items = [
   //id === inventoryId
-  { id: 1, brand: 4, name: 'Smartphone', packagingtype: 'Electronics', stock: 799.99, expired: '2024/12/12' },
-  { id: 2, brand: 4, name: 'Smartphone', packagingtype: 'Electronics', stock: 799.99, expired: '2024/12/12' },
-  { id: 3, brand: 4, name: 'Smartphone', packagingtype: 'Electronics', stock: 799.99, expired: '2024/12/12' },
-  { id: 4, brand: 4, name: 'Smartphone', packagingtype: 'Electronics', stock: 799.99, expired: '2024/12/12' },
-  { id: 5, brand: 4, name: 'Smartphone', packagingtype: 'Electronics', stock: 799.99, expired: '2024/12/12' },
+  { teaId: 6, brand: 4, name: 'Smartphone', packagingtype: 'Electronics', stock: 799.99, expired: '2024/12/12' },
+  { teaId: 7, brand: 4, name: 'Smartphone', packagingtype: 'Electronics', stock: 799.99, expired: '2024/12/12' },
+  { teaId: 8, brand: 4, name: 'Smartphone', packagingtype: 'Electronics', stock: 799.99, expired: '2024/12/12' },
+  { teaId: 9, brand: 4, name: 'Smartphone', packagingtype: 'Electronics', stock: 799.99, expired: '2024/12/12' },
+  { teaId: 10, brand: 4, name: 'Smartphone', packagingtype: 'Electronics', stock: 799.99, expired: '2024/12/12' },
 ];
