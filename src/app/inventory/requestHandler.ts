@@ -1,6 +1,6 @@
 export async function getInventoryList() {
   const userId: number = Number(window.sessionStorage.getItem('userId'));
-  fetch(`/api/inventory/user/${userId}`)
-    .then(response => response.json())
-    .then((data) => console.log(data));
+  const response = await fetch(`/api/inventory/user/${userId}`);
+  const inventoryList = await response.json();
+  return inventoryList
 }

@@ -3,13 +3,43 @@
 import { getInventoryList } from './requestHandler';
 
 import { Stack, Table } from '@chakra-ui/react';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 export default function TeaList():JSX.Element {
 
+  type InventoryItem = {
+      inventory: {
+        inventoryId: {
+          userId: number,
+          teaId: number
+        },
+        amount: number,
+        expired: string
+      },
+      tea: {
+        teaId: number,
+        brand: string,
+        name: string,
+        packagingtype: string,
+        type: string,
+        minute: number,
+        second: number,
+        temperature: number,
+        quantity: number,
+        watervolume: number
+      }
+    }
+
+  const [inventoryList, setInventoryList] = useState<InventoryItem[]>([]);
+
   useEffect(() => {
-    getInventoryList();
-  })
+    async function getList() {
+      // getInventoryList();
+      const list = await getInventoryList();
+      setInventoryList(list);
+    }
+    getList();
+  }, [])
 
   return (
     <Stack gap="10">
@@ -24,13 +54,13 @@ export default function TeaList():JSX.Element {
           </Table.Row>
         </Table.Header>
         <Table.Body>
-          {items.map((item, index) => (
+          {inventoryList.map((item, index) => (
             <Table.Row key={index}>
-              <Table.Cell>{item.brand}</Table.Cell>
-              <Table.Cell>{item.name}</Table.Cell>
-              <Table.Cell>{item.packagingtype}</Table.Cell>
-              <Table.Cell>{item.stock}</Table.Cell>
-              <Table.Cell>{item.expired}</Table.Cell>
+              <Table.Cell>{item.tea.brand}</Table.Cell>
+              <Table.Cell>{item.tea.name}</Table.Cell>
+              <Table.Cell>{item.tea.packagingtype}</Table.Cell>
+              <Table.Cell>{item.inventory.amount}</Table.Cell>
+              <Table.Cell>{item.inventory.expired}</Table.Cell>
             </Table.Row>
           ))}
         </Table.Body>
