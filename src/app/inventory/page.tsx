@@ -1,6 +1,6 @@
 import '/src/styles/globals.css';
 import Sidebar from './sidebar';
-import TeaList from './table';
+import TeaList from './teaList';
 
 export default function inventory(): JSX.Element {
   return (

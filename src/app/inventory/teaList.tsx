@@ -1,8 +1,16 @@
 'use client';
 
-import { Stack, Table } from '@chakra-ui/react';
+import { getInventoryList } from './requestHandler';
 
-export default function Tealist():JSX.Element {
+import { Stack, Table } from '@chakra-ui/react';
+import { useEffect } from 'react';
+
+export default function TeaList():JSX.Element {
+
+  useEffect(() => {
+    getInventoryList();
+  })
+
   return (
     <Stack gap="10">
       <Table.Root size="lg" variant="outline">
