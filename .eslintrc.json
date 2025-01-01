@@ -13,7 +13,7 @@
   },
   "ignorePatterns": [
     "node_modules/",
-    ".gitignore", 
+    ".gitignore",
     ".next/**/*",
     "package-lock.json",
     "package.json",

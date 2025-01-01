@@ -5,30 +5,29 @@ import { getInventoryList } from './requestHandler';
 import { Stack, Table } from '@chakra-ui/react';
 import { useEffect, useState } from 'react';
 
-export default function TeaList():JSX.Element {
-
+export default function TeaList(): JSX.Element {
   type InventoryItem = {
-      inventory: {
-        inventoryId: {
-          userId: number,
-          teaId: number
-        },
-        amount: number,
-        expired: string
-      },
-      tea: {
-        teaId: number,
-        brand: string,
-        name: string,
-        packagingtype: string,
-        type: string,
-        minute: number,
-        second: number,
-        temperature: number,
-        quantity: number,
-        watervolume: number
-      }
-    }
+    inventory: {
+      inventoryId: {
+        userId: number;
+        teaId: number;
+      };
+      amount: number;
+      expired: string;
+    };
+    tea: {
+      teaId: number;
+      brand: string;
+      name: string;
+      packagingtype: string;
+      type: string;
+      minute: number;
+      second: number;
+      temperature: number;
+      quantity: number;
+      watervolume: number;
+    };
+  };
 
   const [inventoryList, setInventoryList] = useState<InventoryItem[]>([]);
 
@@ -39,7 +38,7 @@ export default function TeaList():JSX.Element {
       setInventoryList(list);
     }
     getList();
-  }, [])
+  }, []);
 
   return (
     <Stack gap="10">
@@ -68,12 +67,3 @@ export default function TeaList():JSX.Element {
     </Stack>
   );
 }
-
-const items = [
-  //id === inventoryId
-  { teaId: 6, brand: 4, name: 'Smartphone', packagingtype: 'Electronics', stock: 799.99, expired: '2024/12/12' },
-  { teaId: 7, brand: 4, name: 'Smartphone', packagingtype: 'Electronics', stock: 799.99, expired: '2024/12/12' },
-  { teaId: 8, brand: 4, name: 'Smartphone', packagingtype: 'Electronics', stock: 799.99, expired: '2024/12/12' },
-  { teaId: 9, brand: 4, name: 'Smartphone', packagingtype: 'Electronics', stock: 799.99, expired: '2024/12/12' },
-  { teaId: 10, brand: 4, name: 'Smartphone', packagingtype: 'Electronics', stock: 799.99, expired: '2024/12/12' },
-];

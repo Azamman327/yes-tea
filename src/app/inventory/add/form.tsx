@@ -67,11 +67,7 @@ export default function form() {
     },
   });
 
-  const {
-    register,
-    control,
-    handleSubmit,
-  } = useForm<FormValues>();
+  const { register, control, handleSubmit } = useForm<FormValues>();
   const onSubmit = handleSubmit((data) => {
     addTeaAndInventoryInfo(data);
   });
