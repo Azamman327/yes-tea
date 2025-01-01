@@ -73,8 +73,7 @@ export default function form() {
     handleSubmit,
   } = useForm<FormValues>();
   const onSubmit = handleSubmit((data) => {
-    // addTeaAndInventoryInfo(data);
-    console.log(data);
+    addTeaAndInventoryInfo(data);
   });
 
   return (

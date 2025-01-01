@@ -1,7 +1,7 @@
 'use client';
 import axios from 'axios';
 
-export async function login(name: String, password: String): Promise<void> {
+export async function login(name: string, password: string): Promise<void> {
   try {
     const response = await axios.post('/api/users/login', {
       name: name,
@@ -13,7 +13,7 @@ export async function login(name: String, password: String): Promise<void> {
 
     window.location.replace('/timer');
   } catch (error) {
-    let errorMessage = error.response.data.message;
+    const errorMessage = error.response.data.message;
 
     if (errorMessage == 'INVALID USER') {
       alert('존재하지 않는 회원입니다.');
