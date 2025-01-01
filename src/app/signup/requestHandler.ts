@@ -1,7 +1,7 @@
 'use client';
 import axios from 'axios';
 
-export async function createUser(name: String, password: String, email: String): Promise<void> {
+export async function createUser(name: string, password: string): Promise<void> {
   try {
     const response = await axios.post('/api/users/create', {
       name: name,

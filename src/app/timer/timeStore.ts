@@ -11,7 +11,7 @@ export interface TimeState {
 export const useTimeStore = create<TimeState>()((set) => ({
   minutes: 0,
   seconds: 10,
-  updateMinutesState: (minutes: number) => set(() => ({ minutes: minutes })),
+  updateMinutesState: (minutes) => set(() => ({ minutes: minutes })),
   updateSecondsState: (seconds: number) => set(() => ({ seconds: seconds })),
   updateTimeState: (time: TimeState) => set(() => ({ minutes: time.minutes, seconds: time.seconds })),
 }));
