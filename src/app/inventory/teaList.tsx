@@ -33,7 +33,6 @@ export default function TeaList(): JSX.Element {
 
   useEffect(() => {
     async function getList() {
-      // getInventoryList();
       const list = await getInventoryList();
       setInventoryList(list);
     }
@@ -42,28 +41,32 @@ export default function TeaList(): JSX.Element {
 
   return (
     <Stack gap="10">
-      <Table.Root size="lg" variant="outline">
-        <Table.Header>
-          <Table.Row>
-            <Table.ColumnHeader>브랜드</Table.ColumnHeader>
-            <Table.ColumnHeader>제품명</Table.ColumnHeader>
-            <Table.ColumnHeader>잎차/티백</Table.ColumnHeader>
-            <Table.ColumnHeader>재고</Table.ColumnHeader>
-            <Table.ColumnHeader>유통기한</Table.ColumnHeader>
-          </Table.Row>
-        </Table.Header>
-        <Table.Body>
-          {inventoryList.map((item, index) => (
-            <Table.Row key={index}>
-              <Table.Cell>{item.tea.brand}</Table.Cell>
-              <Table.Cell>{item.tea.name}</Table.Cell>
-              <Table.Cell>{item.tea.packagingtype}</Table.Cell>
-              <Table.Cell>{item.inventory.amount}</Table.Cell>
-              <Table.Cell>{item.inventory.expired}</Table.Cell>
+      <Table.ScrollArea rounded="md" height="70vh">
+        <Table.Root size="lg" variant="outline">
+          <Table.Header>
+            <Table.Row>
+              <Table.ColumnHeader>브랜드</Table.ColumnHeader>
+              <Table.ColumnHeader>제품명</Table.ColumnHeader>
+              <Table.ColumnHeader>잎차/티백</Table.ColumnHeader>
+              <Table.ColumnHeader>재고</Table.ColumnHeader>
+              <Table.ColumnHeader>유통기한</Table.ColumnHeader>
             </Table.Row>
-          ))}
-        </Table.Body>
-      </Table.Root>
+          </Table.Header>
+          <Table.Body>
+            {inventoryList.map((item, index) => (
+              <Table.Row key={index}>
+                <Table.Cell>{item.tea.brand}</Table.Cell>
+                <Table.Cell>{item.tea.name}</Table.Cell>
+                <Table.Cell>{item.tea.packagingtype}</Table.Cell>
+                <Table.Cell>{item.inventory.amount}</Table.Cell>
+                <Table.Cell>{item.inventory.expired}</Table.Cell>
+              </Table.Row>
+            ))}
+          </Table.Body>
+        </Table.Root>
+      </Table.ScrollArea>
     </Stack>
   );
+
+  
 }

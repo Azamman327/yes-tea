@@ -198,13 +198,13 @@ export default function form() {
 
         <div className="flex flex-row justify-around mt-10">
           <button
-            className="mt-4 w-1/3 phone:w-1/4 rounded-md bg-green-500 py-1 px-2 sm:py-2 sm:px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg focus:bg-green-600 focus:shadow-none active:bg-green-700 hover:bg-green-600 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none mt-10"
+            className="mt-4 w-1/3 phone:w-1/4 rounded-md bg-green-500 py-1 px-2 sm:py-2 sm:px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg active:bg-green-700 hover:bg-green-600 active:shadow-none mt-10"
             type="submit"
           >
             추가하기
           </button>
           <button
-            className="mt-4 w-1/3 phone:w-1/4 rounded-md bg-slate-300 py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg focus:bg-slate-400 focus:shadow-none active:bg-slate-500 hover:bg-slate-400 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none mt-10"
+            className="mt-4 w-1/3 phone:w-1/4 rounded-md bg-slate-300 py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg active:bg-slate-500 hover:bg-slate-400 active:shadow-none mt-10"
             type="reset"
           >
             취소
