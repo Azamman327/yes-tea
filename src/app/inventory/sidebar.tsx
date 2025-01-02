@@ -1,6 +1,6 @@
 import Image from 'next/image';
 
-export default function sidebar() {
+export default function sidebar(): JSX.Element {
   return (
     <div className="w-1/3 hidden xl:block">
       <Image

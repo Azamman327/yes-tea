@@ -1,7 +1,6 @@
 'use client';
 
 import './globals.css';
-import { Provider } from '@/components/ui/provider';
 import { ChakraProvider } from '@chakra-ui/react';
 import { defaultSystem } from '@chakra-ui/react';
 

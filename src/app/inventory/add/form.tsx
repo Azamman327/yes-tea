@@ -67,12 +67,7 @@ export default function form() {
     },
   });
 
-  const {
-    register,
-    control,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<FormValues>();
+  const { register, control, handleSubmit } = useForm<FormValues>();
   const onSubmit = handleSubmit((data) => {
     addTeaAndInventoryInfo(data);
   });
@@ -205,9 +200,6 @@ export default function form() {
           <button
             className="mt-4 w-1/3 phone:w-1/4 rounded-md bg-green-500 py-1 px-2 sm:py-2 sm:px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg focus:bg-green-600 focus:shadow-none active:bg-green-700 hover:bg-green-600 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none mt-10"
             type="submit"
-            onSubmit={() => {
-              handleSubmit;
-            }}
           >
             추가하기
           </button>
