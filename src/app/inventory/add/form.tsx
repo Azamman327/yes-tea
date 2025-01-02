@@ -1,6 +1,7 @@
 'use client';
 import { useState } from 'react';
 import { useForm, Controller } from 'react-hook-form';
+import { useRouter } from 'next/navigation'
 
 import { addTeaAndInventoryInfo } from './requestHandler';
 import { Input } from '@chakra-ui/react';
@@ -34,6 +35,7 @@ type FormValues = {
 };
 
 export default function form() {
+  const router = useRouter();
   const [selectedPackaging, setSelectedPackaging] = useState('teabag');
 
   const types = createListCollection({
@@ -70,6 +72,7 @@ export default function form() {
   const { register, control, handleSubmit } = useForm<FormValues>();
   const onSubmit = handleSubmit((data) => {
     addTeaAndInventoryInfo(data);
+    router.push('/inventory');
   });
 
   return (
@@ -90,7 +93,7 @@ export default function form() {
               <Controller
                 name="packagingtype"
                 control={control}
-                defaultValue="teabag" // 초기값 설정
+                defaultValue="teabag"
                 render={({ field }) => (
                   <RadioGroup
                     {...field}
