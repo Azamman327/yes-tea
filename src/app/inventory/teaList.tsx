@@ -36,6 +36,7 @@ export default function TeaList(): JSX.Element {
   const inventoryStore = useInventoryStore();
   const router = useRouter();
   const [deleteState, setDeleteState] = useState(false);
+  const [deleteList, setDeleteList] = useState<InventoryItem[]>([]);
 
   useEffect(() => {
     async function getList() {
@@ -44,6 +45,12 @@ export default function TeaList(): JSX.Element {
     }
     getList();
   }, []);
+
+  function deleteItems() {
+    inventoryStore.delete(deleteList);
+    //서버 요청
+    setDeleteState(false);
+  }
 
   return (
     <>
@@ -66,11 +73,13 @@ export default function TeaList(): JSX.Element {
               </Table.Row>
             </Table.Header>
             <Table.Body>
-              {inventoryStore.items.map((item, index) => (
+              {inventoryStore.items.map((item: InventoryItem, index: number) => (
                 <Table.Row key={index}>
                   {
                     deleteState === true ?
-                    <Table.Cell className='text-center'><Checkbox variant='subtle'></Checkbox></Table.Cell>
+                    <Table.Cell className='text-center'>
+                      <Checkbox variant='subtle' onClick={() => setDeleteList(deleteList => [...deleteList, item])}></Checkbox>
+                    </Table.Cell>
                     :
                     <></>
                   }
@@ -88,7 +97,9 @@ export default function TeaList(): JSX.Element {
       <div className="mt-5 flex justify-evenly">
         {deleteState === true ? (
           <>
-            <button className="mt-4 w-1/3 phone:w-1/4 rounded-md bg-red-500 py-1 px-2 sm:py-2 sm:px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg active:bg-red-700 hover:bg-red-600 active:shadow-none mt-10">
+            <button className="mt-4 w-1/3 phone:w-1/4 rounded-md bg-red-500 py-1 px-2 sm:py-2 sm:px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg active:bg-red-700 hover:bg-red-600 active:shadow-none mt-10"
+              onClick={() => deleteItems()}
+            >
               삭제하기
             </button>
             <button

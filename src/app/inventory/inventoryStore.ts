@@ -26,13 +26,13 @@ type InventoryItems = {
 export interface InventoryState {
   items: InventoryItems[];
   initial: (initailInven: InventoryItems[]) => void;
-  // delete: (teaId: number, items: InventoryItems[]) => void
+  delete: (items: InventoryItems[]) => void;
 }
 
 export const useInventoryStore = create<InventoryState>()((set) => ({
   items: [],
   initial: (initailItems: InventoryItems[]) => set(() => ({ items: initailItems })),
-  // delete: (teaId: number, items:InventoryItems[]) => set(() => ({
-
-  // }))
+  delete: (items:InventoryItems[]) => set((state) => ({
+    items: state.items.filter(item => !items.includes(item))
+  }))
 }));
