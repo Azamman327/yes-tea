@@ -1,3 +1,6 @@
+'use client';
+import axios from 'axios';
+
 type InventoryItem = {
   inventory: {
     inventoryId: {
@@ -28,4 +31,12 @@ export async function getInventoryList() {
   return inventoryList;
 }
 
-export async function deleteInventory(deleteInventory: InventoryItem[]) {}
+export async function deleteInventory(deleteInventory: InventoryItem[]) {
+  try {
+    await axios.delete(`/api/inventory/delete`, {
+      data: deleteInventory
+    });
+  } catch (error) {
+    console.error(error);
+  }
+}
