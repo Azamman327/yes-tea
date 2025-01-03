@@ -1,6 +1,7 @@
 'use client';
 
 import { getInventoryList } from './requestHandler';
+import { useInventoryStore } from './inventoryStore';
 
 import { Stack, Table } from '@chakra-ui/react';
 import { useEffect, useState } from 'react';
@@ -29,12 +30,15 @@ export default function TeaList(): JSX.Element {
     };
   };
 
-  const [inventoryList, setInventoryList] = useState<InventoryItem[]>([]);
+  const inventoryStore = useInventoryStore();
+
+  // const [inventoryList, setInventoryList] = useState<InventoryItem[]>([]);
 
   useEffect(() => {
     async function getList() {
       const list = await getInventoryList();
-      setInventoryList(list);
+      // setInventoryList(list);
+      inventoryStore.initial(list);
     }
     getList();
   }, []);
@@ -53,7 +57,7 @@ export default function TeaList(): JSX.Element {
             </Table.Row>
           </Table.Header>
           <Table.Body>
-            {inventoryList.map((item, index) => (
+            {inventoryStore.items.map((item, index) => (
               <Table.Row key={index}>
                 <Table.Cell>{item.tea.brand}</Table.Cell>
                 <Table.Cell>{item.tea.name}</Table.Cell>
