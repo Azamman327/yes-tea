@@ -32,12 +32,9 @@ export default function TeaList(): JSX.Element {
 
   const inventoryStore = useInventoryStore();
 
-  // const [inventoryList, setInventoryList] = useState<InventoryItem[]>([]);
-
   useEffect(() => {
     async function getList() {
       const list = await getInventoryList();
-      // setInventoryList(list);
       inventoryStore.initial(list);
     }
     getList();
@@ -71,6 +68,4 @@ export default function TeaList(): JSX.Element {
       </Table.ScrollArea>
     </Stack>
   );
-
-  
 }

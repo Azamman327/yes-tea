@@ -1,7 +1,7 @@
 'use client';
 import { useState } from 'react';
 import { useForm, Controller } from 'react-hook-form';
-import { useRouter } from 'next/navigation'
+import { useRouter } from 'next/navigation';
 
 import { addTeaAndInventoryInfo } from './requestHandler';
 import { Input } from '@chakra-ui/react';
