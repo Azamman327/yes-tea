@@ -32,7 +32,8 @@ export interface InventoryState {
 export const useInventoryStore = create<InventoryState>()((set) => ({
   items: [],
   initial: (initailItems: InventoryItems[]) => set(() => ({ items: initailItems })),
-  delete: (items:InventoryItems[]) => set((state) => ({
-    items: state.items.filter(item => !items.includes(item))
-  }))
+  delete: (items: InventoryItems[]) =>
+    set((state) => ({
+      items: state.items.filter((item) => !items.includes(item)),
+    })),
 }));

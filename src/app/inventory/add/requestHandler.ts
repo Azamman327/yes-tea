@@ -40,8 +40,8 @@ export async function addTeaAndInventoryInfo(data: FormValues) {
   try {
     const userId: number = Number(window.sessionStorage.getItem('userId'));
 
-    const formatMonth = ("00" + data.month).slice(-2);
-    const formatDay = ("00" + data.day).slice(-2);
+    const formatMonth = ('00' + data.month).slice(-2);
+    const formatDay = ('00' + data.day).slice(-2);
 
     const response = await axios.post('/api/inventory/create', {
       inventoryId: {
